@@ -842,9 +842,9 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <p class="lead">I study computer science at Columbia and work on two sides of language models: making them cheaper to run, and figuring out what is going on inside them. When I'm not doing that I'm usually reading fiction or looking at space.</p>
       <div class="hero-links">
         <button class="hlink hlink-mail" type="button" id="hero-mail"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2"/><path d="m3.5 6 6.5 5 6.5-5"/></svg><span class="mail-addr" id="hero-mail-addr">hhernye@gmail.com</span><span class="hlink-act">Copy</span></button>
-        <a class="hlink" href="Henry_He_Resume.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 2.5h6l3.5 3.5v11.5h-9.5z"/><path d="M11.5 2.5V6H15M8 10h5M8 13h5"/></svg>Resume</a>
-        <a class="hlink" href="https://github.com/HenryWashuHe" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>GitHub</a>
-        <a class="hlink" href="https://linkedin.com/in/henry-he-40a44531b" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c.8-3 3.2-4.5 6-4.5s5.2 1.5 6 4.5"/></svg>LinkedIn</a>
+        <a class="hlink" href="Henry_He_Resume.pdf" data-umami-event="resume-open" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 2.5h6l3.5 3.5v11.5h-9.5z"/><path d="M11.5 2.5V6H15M8 10h5M8 13h5"/></svg>Resume</a>
+        <a class="hlink" href="https://github.com/HenryWashuHe" data-umami-event="github-open" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>GitHub</a>
+        <a class="hlink" href="https://linkedin.com/in/henry-he-40a44531b" data-umami-event="linkedin-open" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c.8-3 3.2-4.5 6-4.5s5.2 1.5 6 4.5"/></svg>LinkedIn</a>
       </div>
       <p class="avail"><span class="avail-dot" aria-hidden="true"></span>Open to Summer 2027 infrastructure SWE internships, May 14 to September 7</p>
       <p class="clock"><i aria-hidden="true"></i><span id="clock">It's afternoon in New York.</span></p>
@@ -1280,7 +1280,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             <p>A replication of WebAgent-R1, which trains LLM web agents end to end with multi-turn reinforcement learning.</p>
           </article>
         </div>
-        <p class="sub">More on <a href="https://github.com/HenryWashuHe">GitHub</a>.</p>
+        <p class="sub">More on <a href="https://github.com/HenryWashuHe" data-umami-event="github-open">GitHub</a>.</p>
       </div>
 
       <div class="group" id="research">
@@ -1400,9 +1400,9 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           <button class="copy" type="button" id="copy">Copy email</button>
         </div>
         <div class="links">
-          <a href="Henry_He_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-          <a href="https://github.com/HenryWashuHe">GitHub</a>
-          <a href="https://linkedin.com/in/henry-he-40a44531b">LinkedIn</a>
+          <a href="Henry_He_Resume.pdf" data-umami-event="resume-open" target="_blank" rel="noopener">Resume (PDF)</a>
+          <a href="https://github.com/HenryWashuHe" data-umami-event="github-open">GitHub</a>
+          <a href="https://linkedin.com/in/henry-he-40a44531b" data-umami-event="linkedin-open">LinkedIn</a>
         </div>
       </div>
       <svg class="skyline" id="skyline" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
@@ -1435,7 +1435,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <span class="mail-addr">hhernye@gmail.com</span>
       <button class="copy" type="button" data-copy>Copy email</button>
     </div>
-    <div class="sheet-links"><a href="Henry_He_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a><a href="https://github.com/HenryWashuHe">GitHub</a><a href="https://linkedin.com/in/henry-he-40a44531b">LinkedIn</a></div>
+    <div class="sheet-links"><a href="Henry_He_Resume.pdf" data-umami-event="resume-open" target="_blank" rel="noopener">Resume (PDF)</a><a href="https://github.com/HenryWashuHe" data-umami-event="github-open">GitHub</a><a href="https://linkedin.com/in/henry-he-40a44531b" data-umami-event="linkedin-open">LinkedIn</a></div>
   </div>
 </dialog>
 
@@ -1453,6 +1453,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
 <script>
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function track(name, data) { try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
 
   /* ---- name letters ---- */
   var nameEl = document.getElementById("name"), idx = 0;
@@ -1533,6 +1534,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     b.addEventListener("click", function () {
       var row = b.closest(".row"), open = !row.classList.contains("open");
       row.classList.toggle("open", open); b.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) track("row-open", { row: b.querySelector(".row-org").textContent });
     });
   });
 
@@ -1619,7 +1621,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     var b = document.createElement("button");
     b.type = "button"; b.className = "area-tab"; b.id = "tab-" + i; b.setAttribute("role", "tab");
     b.setAttribute("aria-controls", "area-panel"); b.textContent = a.name;
-    b.addEventListener("click", function () { show(i); });
+    b.addEventListener("click", function () { show(i); track("area-tab", { area: a.name }); });
     b.addEventListener("keydown", function (e) {
       var d = (e.key === "ArrowDown" || e.key === "ArrowRight") ? 1 : (e.key === "ArrowUp" || e.key === "ArrowLeft") ? -1 : 0;
       if (d) { e.preventDefault(); var j = (i + d + AREAS.length) % AREAS.length; show(j); tabs[j].focus(); }
@@ -1667,7 +1669,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       c.closest(".tb-row").after(pop);
       pop.classList.remove("swap"); void pop.offsetWidth; pop.classList.add("swap");
     }
-    chips.forEach(function (c) { c.addEventListener("click", function () { pick(c); }); });
+    chips.forEach(function (c) { c.addEventListener("click", function () { pick(c); track("toolbox", { tool: c.textContent }); }); });
     pop.addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) jumpTo(b.getAttribute("data-go")); });
     pick(chips.filter(function (c) { return c.textContent === "Go"; })[0]);
   })();
@@ -1720,7 +1722,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       btns.forEach(function (b) {
         b.addEventListener("click", function () {
           btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-          st[g.getAttribute("data-key")] = b.getAttribute("data-v"); render();
+          st[g.getAttribute("data-key")] = b.getAttribute("data-v"); render(); track("cohort-toy", { control: g.getAttribute("data-key") });
         });
       });
     });
@@ -1743,7 +1745,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
         ? "Plain WER prefers Model B: 2 wrong words out of 11 beats 3. But B got the dose and the drug wrong."
         : "Weighting medical terms 5x flips it. A only fumbled small talk, while B's two errors would end up in a medical record. Made-up example, not Trizen data.";
     }
-    btns.forEach(function (b) { b.addEventListener("click", function () { set(b.getAttribute("data-v")); }); });
+    btns.forEach(function (b) { b.addEventListener("click", function () { set(b.getAttribute("data-v")); track("asr-metric", { metric: b.getAttribute("data-v") }); }); });
     set("plain");
   })();
 
@@ -1752,7 +1754,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   var down = [false, false, false, false, false], leader = 0, committed = 0, electing = false;
   var nodes = down.map(function (_, i) {
     var b = document.createElement("button"); b.type = "button"; b.className = "node"; b.textContent = "S" + (i + 1);
-    b.addEventListener("click", function () { down[i] = !down[i]; render(); if (down[i] && i === leader) electing = true; status(); });
+    b.addEventListener("click", function () { down[i] = !down[i]; track("paxos-toy"); render(); if (down[i] && i === leader) electing = true; status(); });
     nodeBox.appendChild(b); return b;
   });
   function alive() { return down.filter(function (d) { return !d; }).length; }
@@ -1813,7 +1815,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   segBtns.forEach(function (b) {
     b.addEventListener("click", function () {
       segBtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-      moveThumb(b); apply(parseFloat(b.dataset.r));
+      moveThumb(b); apply(parseFloat(b.dataset.r)); track("kv-toy", { retention: b.textContent });
     });
   });
   apply(1);
@@ -1839,6 +1841,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   var email = document.getElementById("email");
   function selectEmail() { var r = document.createRange(); r.selectNodeContents(email); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
   function copyEmail(target) {
+    track("email-copy");
     var sel = function () { var r = document.createRange(); r.selectNodeContents(target); var s2 = window.getSelection(); s2.removeAllRanges(); s2.addRange(r); say("Email selected. Press Ctrl+C or ⌘C to copy."); };
     try { navigator.clipboard.writeText("hhernye@gmail.com").then(function () { say("Copied hhernye@gmail.com"); }, sel); } catch (e) { sel(); }
   }
@@ -1854,6 +1857,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   diveBtn.addEventListener("click", function () {
     var open = !diveBox.classList.contains("open");
     diveBox.classList.toggle("open", open); diveBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) track("comet-deep-dive");
   });
   document.querySelectorAll(".lab-btn").forEach(function (b) {
     b.addEventListener("click", function () {
@@ -1866,7 +1870,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   var sheet = document.getElementById("tldr"), opener = document.getElementById("tldr-open");
   function openSheet() {
     if (!sheet.showModal) { location.hash = "#contact"; return; }
-    sheet.showModal(); requestAnimationFrame(function () { requestAnimationFrame(function () { sheet.classList.add("in"); }); });
+    track("tldr-open"); sheet.showModal(); requestAnimationFrame(function () { requestAnimationFrame(function () { sheet.classList.add("in"); }); });
   }
   function closeSheet(after) {
     sheet.classList.remove("in");
@@ -1987,7 +1991,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       if (!c.abs) return;
       var hover = mouse.x > c.box[0] && mouse.x < c.box[2] && mouse.y > c.box[1] && mouse.y < c.box[3];
       if (hover && !c.found) {
-        c.found = true; c.t0 = now; foundN++;
+        c.found = true; c.t0 = now; foundN++; track("constellation", { name: c.name });
         huntDots[foundN - 1].classList.add("got");
         huntEl.textContent = foundN === 4 ? "All four found. Now you have to say hi." : "Found " + foundN + " of 4: " + c.name + ".";
       }
@@ -2172,7 +2176,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     function open() {
       if (!pal.showModal) return;
       if (pal.open) return;
-      q.value = ""; sel = 0; render(); pal.showModal(); q.focus();
+      q.value = ""; sel = 0; render(); pal.showModal(); q.focus(); track("quick-jump-open");
       requestAnimationFrame(function () { pal.classList.add("in"); });
     }
     function close(after) {
@@ -2180,7 +2184,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       setTimeout(function () { if (pal.open) pal.close(); if (after) after(); }, reduce ? 0 : 180);
     }
     function run(it) {
-      var a = it[2];
+      var a = it[2]; track("quick-jump", { to: it[0] });
       if (a.href) { list.querySelector('[data-i="' + shown.indexOf(it) + '"] a').click(); close(); return; }
       close(function () {
         if (a.go) jumpTo(a.go);
