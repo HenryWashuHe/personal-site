@@ -167,7 +167,6 @@ p { margin: 0; text-wrap: pretty; }
   animation-delay: calc(var(--i) * 45ms + 80ms);
   transition: transform .45s var(--ease-spring);
 }
-.ch:hover { transform: translateY(-.08em) rotate(-3deg); }
 @keyframes rise { from { transform: translateY(.45em); opacity: 0; } to { transform: none; opacity: 1; } }
 .lead { font-size: var(--t-md); line-height: 1.5; max-width: 32em; animation: fade 1s .55s var(--ease-out) both; }
 .clock { font-size: var(--t-sm); color: var(--muted); display: flex; align-items: center; gap: 10px; animation: fade 1s .75s var(--ease-out) both; }
@@ -558,6 +557,66 @@ h4 { font-family: var(--body); font-weight: 650; font-size: 1rem; margin: 0 0 6p
   .row-tech { grid-row: 4; }
 }
 
+/* ---------- coursework ---------- */
+.courses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.c-col h3 { font-size: var(--t-md); margin-bottom: 10px; }
+.c-col ul { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid rgba(43, 24, 32, .2); }
+.c-row { width: 100%; text-align: left; border: 0; background: none; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; padding: 10px 6px; border-bottom: 1.5px solid rgba(43, 24, 32, .12); border-radius: 0; font: inherit; color: inherit; transition: background .25s, padding .35s var(--ease-out); }
+.c-name { flex: 1 1 100%; font-weight: 600; font-size: .97rem; line-height: 1.35; }
+.c-meta { font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.grade { font-size: .74rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: linear-gradient(135deg, #fff6dc, #ffc271); box-shadow: inset 0 0 0 1px rgba(168, 90, 30, .35); }
+.c-link { cursor: pointer; }
+.c-link:hover { background: rgba(255, 255, 255, .35); padding-left: 12px; }
+.c-see { font-size: .78rem; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+/* ---------- delight layer ---------- */
+::selection { background: #ffd27a; color: #2b1820; }
+.k-btn { border: 0; background: none; cursor: pointer; padding: 6px 8px; border-radius: 999px; transition: background .2s; }
+.k-btn:hover { background: rgba(43, 24, 32, .08); }
+kbd { font-family: var(--body); font-size: .74rem; font-weight: 650; padding: 2px 7px; border-radius: 6px; box-shadow: inset 0 0 0 1.25px currentColor; opacity: .75; }
+.sky-time { display: inline-flex; align-items: center; gap: 7px; padding: 0 12px 0 6px; font-size: var(--t-sm); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sky-time i { width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #fff6dc, #ff9a5a 75%); box-shadow: 0 0 8px rgba(255, 170, 90, .8); transition: background .6s, box-shadow .6s; }
+.sky-time.night i { background: radial-gradient(circle at 35% 40%, #fbead9 0 55%, transparent 56%); box-shadow: 0 0 8px rgba(251, 234, 217, .6); }
+.top.night .k-btn:hover { background: rgba(251, 234, 217, .1); }
+.cue { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; font-size: var(--t-sm); font-weight: 600; text-decoration: none; color: var(--muted); transition: opacity .5s; animation: fade 1s .95s var(--ease-out) both; }
+.cue-sun { width: 12px; height: 12px; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #fff6dc, #ff9a5a 75%); animation: cueSet 2.4s var(--ease-out) infinite; }
+@keyframes cueSet { 0% { transform: translateY(-4px); } 60% { transform: translateY(6px) scale(.85); opacity: .5; } 100% { transform: translateY(-4px); } }
+.cue.gone { opacity: 0; pointer-events: none; }
+.glow {
+  position: fixed; left: 0; top: 0; z-index: 15; width: 440px; height: 440px; margin: -220px 0 0 -220px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 238, 205, .55), rgba(255, 196, 140, .18) 40%, transparent 68%);
+  mix-blend-mode: soft-light; opacity: 0; transition: opacity .5s; will-change: transform;
+}
+.glow.on { opacity: 1; }
+.hw { display: inline-block; white-space: nowrap; }
+.hl { display: inline-block; }
+.wave .hl { animation: hop .9s var(--ease-spring) both; animation-delay: calc(var(--i) * 26ms); }
+@keyframes hop { 0% { transform: none; } 35% { transform: translateY(-.16em) rotate(-4deg); } 100% { transform: none; } }
+.tilt { position: relative; transform-style: preserve-3d; }
+.tilt::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .42), transparent 46%); opacity: 0; transition: opacity .35s; }
+.tilt.tilting::after { opacity: 1; }
+.birds { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.bird { position: absolute; left: 0; top: var(--y); animation: fly var(--t) linear infinite; animation-delay: var(--d); }
+.bird svg { display: block; width: calc(22px * var(--s)); height: calc(10px * var(--s)); fill: none; stroke: #3a2440; stroke-width: 1.8; stroke-linecap: round; opacity: .6; animation: flap .55s ease-in-out infinite alternate; transform-origin: center; }
+@keyframes fly { from { transform: translateX(-60px) translateY(0); } 50% { transform: translateX(50vw) translateY(-14px); } to { transform: translateX(calc(100vw + 60px)) translateY(4px); } }
+@keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(.45); } }
+.palette { margin: 0; padding: 0; border: 0; position: fixed; top: 16vh; left: 50%; transform: translate(-50%, -8px) scale(.98); opacity: 0; width: min(560px, calc(100vw - 32px)); border-radius: 22px; background: var(--paper); color: var(--ink); box-shadow: 0 30px 80px -20px rgba(40, 14, 30, .6); transition: transform .35s var(--ease-spring), opacity .2s; }
+.palette.in { transform: translate(-50%, 0) scale(1); opacity: 1; }
+.palette::backdrop { background: rgba(43, 24, 32, .3); backdrop-filter: blur(3px); }
+.pal-in { display: flex; flex-direction: column; }
+#pal-q { border: 0; outline: 0; background: transparent; font: inherit; font-size: 1.1rem; padding: 18px 20px; border-bottom: 1.5px solid rgba(43, 24, 32, .12); color: var(--ink); }
+#pal-list { list-style: none; margin: 0; padding: 8px; max-height: 50vh; overflow: auto; }
+#pal-list li a, #pal-list li button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 0; border-radius: 12px; background: none; font: inherit; color: inherit; text-decoration: none; text-align: left; cursor: pointer; }
+#pal-list li[aria-selected="true"] a, #pal-list li[aria-selected="true"] button { background: var(--ink); color: var(--paper); }
+#pal-list li span.k { font-size: .76rem; font-weight: 650; opacity: .6; }
+#pal-list li.empty { padding: 14px 12px; color: #6a4146; }
+.pal-foot { display: flex; gap: 16px; padding: 10px 20px 14px; font-size: .8rem; color: #6a4146; border-top: 1.5px solid rgba(43, 24, 32, .1); }
+.pal-foot kbd { margin-right: 3px; }
+@media (max-width: 1100px) { .sky-time { display: none; } }
+@media (max-width: 860px) { .courses { grid-template-columns: minmax(0, 1fr); gap: 24px; } .k-btn { display: none; } }
+@media (hover: none), (pointer: coarse) { .glow { display: none; } }
+@media (prefers-reduced-motion: reduce) { .bird { display: none; } .glow { display: none; } }
+
 /* ---------- projects ---------- */
 .projects { padding-block: 40px 100px; display: flex; flex-direction: column; gap: 44px; }
 .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: start; max-width: 1040px; }
@@ -700,7 +759,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
 
 <header class="top" id="nav">
   <div class="top-in">
-    <div class="pill"><a class="home" href="#top">Henry He</a><button class="tldr-btn" type="button" id="tldr-open" aria-haspopup="dialog">TL;DR</button></div>
+    <div class="pill"><a class="home" href="#top">Henry He</a><button class="tldr-btn" type="button" id="tldr-open" aria-haspopup="dialog">TL;DR</button><button class="k-btn" type="button" id="pal-open" aria-haspopup="dialog" aria-label="Quick jump"><kbd id="pal-kbd">⌘K</kbd></button><span class="sky-time" id="sky-time" aria-hidden="true"><i></i><b>12:00 pm</b></span></div>
     <div class="pill">
       <nav aria-label="Sections">
         <a href="#work">Work</a>
@@ -720,6 +779,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <h1 class="name" id="name" aria-label="Henry He"></h1>
       <p class="lead">I study computer science at Columbia and work on two sides of language models: making them cheaper to run, and figuring out what is going on inside them. When I'm not doing that I'm usually reading fiction or looking at space.</p>
       <p class="clock"><i aria-hidden="true"></i><span id="clock">It's afternoon in New York.</span></p>
+      <a class="cue" id="cue" href="#toolbox"><span class="cue-sun" aria-hidden="true"></span>Scroll to watch the sun set</a>
     </div>
     <div class="in lately">
       <h2 class="h2-sm">Lately</h2>
@@ -951,6 +1011,15 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             </div></div></div>
           </li>
         </ul>
+      </div>
+
+      <div class="group group-wide" id="coursework">
+        <div class="group-head"><h2 class="h2">Coursework</h2><p>Columbia CS, 3.96 GPA</p></div>
+        <div class="courses">
+          <div class="c-col"><h3>Systems and infrastructure</h3><ul><li><button type="button" class="c-row c-link" data-go="paxos"><span class="c-name">Fundamentals of Large-Scale Distributed Systems</span><span class="c-meta">COMS W4113, Fall 2026</span><span class="tag soon">in progress</span><span class="c-see">See the work</span></button></li><li><button type="button" class="c-row c-link" data-go="comet"><span class="c-name">Scaling LLMs: Systems, Optimization and Emerging Paradigms</span><span class="c-meta">COMS E6998, graduate, Fall 2026</span><span class="tag soon">in progress</span><span class="c-see">See the work</span></button></li><li><button type="button" class="c-row c-link" data-go="cpp"><span class="c-name">C++ for C Programmers</span><span class="c-meta">COMS W4995, Spring 2026</span><span class="c-see">See the work</span></button></li><li><div class="c-row"><span class="c-name">Introduction to Databases</span><span class="c-meta">COMS W4111, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Fundamentals of Computer Systems</span><span class="c-meta">CSEE W3827, Fall 2025</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Advanced Programming</span><span class="c-meta">COMS W3157, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Data Structures and Algorithms</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Computer Science Theory</span><span class="c-meta">COMS W3261, Fall 2026</span><span class="tag soon">in progress</span></div></li></ul></div>
+          <div class="c-col"><h3>Machine learning and AI</h3><ul><li><div class="c-row"><span class="c-name">Reinforcement Learning</span><span class="c-meta">EECS E6892, graduate, Spring 2026</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Natural Language Processing</span><span class="c-meta">COMS W4705, Spring 2026</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Machine Learning</span><span class="c-meta">COMS W4771, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Theory of ML and Interactive Decision Making</span><span class="c-meta">COMS W4995, Spring 2026</span></div></li><li><div class="c-row"><span class="c-name">Introduction to AI</span><span class="grade">A+</span></div></li></ul></div>
+          <div class="c-col"><h3>Beyond CS</h3><ul><li><div class="c-row"><span class="c-name">Galaxies and Cosmology</span><span class="c-meta">ASTR UN1420, Spring 2026</span></div></li><li><div class="c-row"><span class="c-name">Literature Humanities I and II</span><span class="c-meta">HUMA CC1001–1002, 2025–26</span></div></li><li><div class="c-row"><span class="c-name">Contemporary Western Civilization</span><span class="c-meta">COCI CC1101–1102, 2026–27</span><span class="tag soon">in progress</span></div></li><li><div class="c-row"><span class="c-name">Music Humanities</span><span class="c-meta">HUMA UN1123, Fall 2026</span><span class="tag soon">in progress</span></div></li></ul></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1226,7 +1295,12 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     </div>
   </section>
 
-  <div class="horizon" aria-hidden="true"></div>
+  <div class="horizon" aria-hidden="true"><div class="birds">
+    <span class="bird" style="--y:28%;--d:0s;--s:1;--t:26s"><svg viewBox="0 0 24 10"><path d="M1 8Q6 1 12 6Q18 1 23 8"/></svg></span>
+    <span class="bird" style="--y:40%;--d:-3s;--s:.8;--t:26s"><svg viewBox="0 0 24 10"><path d="M1 8Q6 1 12 6Q18 1 23 8"/></svg></span>
+    <span class="bird" style="--y:34%;--d:-5s;--s:.65;--t:26s"><svg viewBox="0 0 24 10"><path d="M1 8Q6 1 12 6Q18 1 23 8"/></svg></span>
+    <span class="bird" style="--y:55%;--d:-14s;--s:.9;--t:32s"><svg viewBox="0 0 24 10"><path d="M1 8Q6 1 12 6Q18 1 23 8"/></svg></span>
+  </div></div>
 
   <div class="night-wrap" id="night">
     <canvas id="stars" aria-hidden="true"></canvas>
@@ -1308,6 +1382,15 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   </div>
 </dialog>
 
+<dialog class="palette" id="palette" aria-label="Quick jump">
+  <div class="pal-in">
+    <input id="pal-q" type="text" placeholder="Jump to a project, job or section" autocomplete="off" spellcheck="false" aria-controls="pal-list">
+    <ul id="pal-list" role="listbox" aria-label="Results"></ul>
+    <p class="pal-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> go</span><span><kbd>Esc</kbd> close</span></p>
+  </div>
+</dialog>
+
+<div class="glow" id="glow" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1379,6 +1462,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     var mo = Math.max(0, Math.min(1, (vh * 0.75 - ntop) / (vh * 0.5)));
     moon.style.opacity = mo; moon.style.transform = "translateY(" + ((1 - mo) * 40) + "px)";
     castShadow(p);
+    skyTime(y, setAt, vh);
     var mark = vh * 0.35, on = -1;
     sections.forEach(function (s, i) { if (s.getBoundingClientRect().top <= mark) on = i; });
     links.forEach(function (a, i) { a.classList.toggle("on", i === on); });
@@ -1905,6 +1989,151 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   sizeStars();
   var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(sizeStars, 150); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeStars);
+
+  /* ===== delight layer ===== */
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* sky clock in the nav */
+  var skyEl = document.getElementById("sky-time"), skyB = skyEl.querySelector("b"), cue = document.getElementById("cue");
+  function skyTime(y, setAt, vh) {
+    if (!skyB) return;
+    var maxY = Math.max(1, document.documentElement.scrollHeight - vh);
+    var t = y <= setAt ? 12 + 7.5 * (y / Math.max(1, setAt)) : 19.5 + 4.45 * Math.min(1, (y - setAt) / Math.max(1, maxY - setAt));
+    t = Math.min(t, 23.99);
+    var h = Math.floor(t), m = Math.floor((t - h) * 60), hh = h > 12 ? h - 12 : h;
+    skyB.textContent = hh + ":" + (m < 10 ? "0" : "") + m + " pm";
+    skyEl.classList.toggle("night", t >= 19.5);
+    cue.classList.toggle("gone", y > 60);
+  }
+  onScroll();
+
+  /* headings hop when they arrive */
+  [].slice.call(document.querySelectorAll("h2.h2, h3.h2-sm, h2.hi")).forEach(function (h) {
+    var text = h.textContent, i = 0;
+    h.setAttribute("aria-label", text); h.textContent = "";
+    text.split(" ").forEach(function (w, wi, arr) {
+      var ws = document.createElement("span"); ws.className = "hw"; ws.setAttribute("aria-hidden", "true");
+      w.split("").forEach(function (c) { var l = document.createElement("span"); l.className = "hl"; l.textContent = c; l.style.setProperty("--i", i++); ws.appendChild(l); });
+      h.appendChild(ws); if (wi < arr.length - 1) h.appendChild(document.createTextNode(" "));
+    });
+    function play() { h.classList.remove("wave"); void h.offsetWidth; h.classList.add("wave"); }
+    h.addEventListener("mouseenter", play);
+    if (!reduce && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } }); }, { threshold: 0.9 });
+      io.observe(h);
+    }
+  });
+
+  if (fine && !reduce) {
+    /* name letters lean away from the cursor */
+    var heroEl = document.querySelector(".hero"), chars = [].slice.call(nameEl.querySelectorAll(".ch"));
+    chars.forEach(function (c) { c._ox = 0; c._oy = 0; c.addEventListener("animationend", function () { c.style.animation = "none"; }); });
+    heroEl.addEventListener("pointermove", function (e) {
+      chars.forEach(function (c) {
+        var r = c.getBoundingClientRect(), cx = r.left + r.width / 2 - c._ox, cy = r.top + r.height / 2 - c._oy;
+        var dx = cx - e.clientX, dy = cy - e.clientY, d = Math.hypot(dx, dy) || 1, f = Math.max(0, 1 - d / 190);
+        c._ox = dx / d * f * 16; c._oy = dy / d * f * 16;
+        c.style.transform = f ? "translate(" + c._ox.toFixed(1) + "px," + c._oy.toFixed(1) + "px) rotate(" + (-dx / d * f * 9).toFixed(1) + "deg)" : "";
+      });
+    });
+    heroEl.addEventListener("pointerleave", function () { chars.forEach(function (c) { c._ox = c._oy = 0; c.style.transform = ""; }); });
+
+    /* warm cursor light */
+    var glow = document.getElementById("glow"), gx = -999, gy = -999, tx = -999, ty = -999, gRun = false;
+    function gStep() {
+      gx += (tx - gx) * 0.18; gy += (ty - gy) * 0.18;
+      glow.style.transform = "translate(" + gx.toFixed(1) + "px," + gy.toFixed(1) + "px)";
+      if (Math.abs(tx - gx) + Math.abs(ty - gy) > 0.5) requestAnimationFrame(gStep); else gRun = false;
+    }
+    window.addEventListener("pointermove", function (e) {
+      if (gx < -900) { gx = e.clientX; gy = e.clientY; }
+      tx = e.clientX; ty = e.clientY; glow.classList.add("on");
+      if (!gRun) { gRun = true; requestAnimationFrame(gStep); }
+    }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", function () { glow.classList.remove("on"); });
+
+    /* cards and toys tilt toward the cursor */
+    [].slice.call(document.querySelectorAll(".card, .toy, .hyp")).forEach(function (el) {
+      el.classList.add("tilt");
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        var amt = el.classList.contains("toy") ? 3 : 6;
+        el.style.transition = "transform .12s ease-out";
+        el.style.transform = "perspective(900px) rotateX(" + ((0.5 - py) * amt).toFixed(2) + "deg) rotateY(" + ((px - 0.5) * amt * 1.3).toFixed(2) + "deg) translateY(-3px)";
+        el.style.setProperty("--gx", (px * 100).toFixed(1) + "%"); el.style.setProperty("--gy", (py * 100).toFixed(1) + "%");
+        el.classList.add("tilting");
+      });
+      el.addEventListener("pointerleave", function () { el.style.transition = ""; el.style.transform = ""; el.classList.remove("tilting"); });
+    });
+  }
+
+  /* coursework rows jump to the work */
+  document.getElementById("coursework").addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) jumpTo(b.getAttribute("data-go")); });
+
+  /* quick jump (Cmd/Ctrl + K) */
+  (function () {
+    var pal = document.getElementById("palette"), q = document.getElementById("pal-q"), list = document.getElementById("pal-list");
+    var mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+    document.getElementById("pal-kbd").textContent = mac ? "⌘K" : "Ctrl K";
+    var ITEMS = [
+      ["The 30-second version", "Action", { act: "tldr" }], ["Copy email", "Action", { act: "copy" }], ["Watch the sun set", "Action", { act: "sunset" }],
+      ["What I work on", "Section", { go: "work" }], ["Toolbox", "Section", { go: "toolbox" }], ["Coursework", "Section", { go: "coursework" }],
+      ["ByteDance", "Work", { go: "b-bd" }], ["Trizen AI", "Work", { go: "b-tz" }], ["Helios Healthcare", "Work", { go: "b-hel" }],
+      ["EleutherAI", "Research", { go: "b-eleuther" }], ["CRIS Lab", "Research", { go: "b-cris" }],
+      ["COMET", "Project", { go: "comet" }], ["Paxos and sharded KV store", "Project", { go: "paxos" }], ["C++ labs", "Project", { go: "cpp" }],
+      ["Squeeze", "Project", { go: "squeeze" }], ["genesis", "Project", { go: "genesis" }], ["AuscultAI", "Project", { go: "auscultai" }], ["UrAgent", "Project", { go: "uragent" }],
+      ["Off the clock", "Section", { go: "life" }], ["Contact", "Section", { go: "contact" }], ["Back to top", "Section", { go: "top" }],
+      ["GitHub", "Link", { href: "https://github.com/HenryWashuHe" }], ["LinkedIn", "Link", { href: "https://linkedin.com/in/henry-he-40a44531b" }]
+    ];
+    var shown = [], sel = 0;
+    function render() {
+      var terms = q.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      shown = ITEMS.filter(function (it) { var hay = (it[0] + " " + it[1]).toLowerCase(); return terms.every(function (t) { return hay.indexOf(t) > -1; }); });
+      sel = Math.min(sel, Math.max(0, shown.length - 1));
+      list.innerHTML = shown.length ? shown.map(function (it, i) {
+        var inner = esc(it[0]) + '<span class="k">' + esc(it[1]) + "</span>";
+        var el = it[2].href ? '<a href="' + it[2].href + '" target="_blank" rel="noopener" tabindex="-1">' + inner + "</a>" : '<button type="button" tabindex="-1">' + inner + "</button>";
+        return '<li role="option" data-i="' + i + '" aria-selected="' + (i === sel) + '">' + el + "</li>";
+      }).join("") : '<li class="empty">Nothing matches. Try "paxos", "android" or "email".</li>';
+      var cur = list.querySelector('[aria-selected="true"]'); if (cur) cur.scrollIntoView({ block: "nearest" });
+    }
+    function open() {
+      if (!pal.showModal) return;
+      if (pal.open) return;
+      q.value = ""; sel = 0; render(); pal.showModal(); q.focus();
+      requestAnimationFrame(function () { pal.classList.add("in"); });
+    }
+    function close(after) {
+      pal.classList.remove("in");
+      setTimeout(function () { if (pal.open) pal.close(); if (after) after(); }, reduce ? 0 : 180);
+    }
+    function run(it) {
+      var a = it[2];
+      if (a.href) { list.querySelector('[data-i="' + shown.indexOf(it) + '"] a').click(); close(); return; }
+      close(function () {
+        if (a.go) jumpTo(a.go);
+        else if (a.act === "tldr") openSheet();
+        else if (a.act === "copy") copyEmail(document.getElementById("email"));
+        else if (a.act === "sunset") { var h = document.querySelector(".horizon"); window.scrollTo({ top: h.offsetTop - window.innerHeight * 0.45, behavior: reduce ? "auto" : "smooth" }); }
+      });
+    }
+    q.addEventListener("input", function () { sel = 0; render(); });
+    q.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(shown.length - 1, sel + 1); render(); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(0, sel - 1); render(); }
+      else if (e.key === "Enter" && shown[sel]) { e.preventDefault(); run(shown[sel]); }
+    });
+    list.addEventListener("click", function (e) { var li = e.target.closest("li[data-i]"); if (!li) return; var it = shown[+li.getAttribute("data-i")]; if (it.href) return; e.preventDefault(); run(it); });
+    list.addEventListener("pointermove", function (e) { var li = e.target.closest("li[data-i]"); if (li && +li.getAttribute("data-i") !== sel) { sel = +li.getAttribute("data-i"); render(); } });
+    pal.addEventListener("cancel", function (e) { e.preventDefault(); close(); });
+    pal.addEventListener("click", function (e) { if (e.target === pal) { var r = pal.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) close(); } });
+    document.getElementById("pal-open").addEventListener("click", open);
+    document.addEventListener("keydown", function (e) {
+      var typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal.open ? close() : open(); }
+      else if (e.key === "/" && !typing && !pal.open) { e.preventDefault(); open(); }
+    });
+  })();
 })();
 </script>
 </body>
