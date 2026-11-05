@@ -902,10 +902,10 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
               <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="r-bd" role="region" aria-labelledby="b-bd"><div><div class="pad">
-              <p class="lede">I spent the summer in Shanghai writing Kotlin in ByteDance's shared Android codebase. Both of my features were for the friend side of the product: one merged into the release branch, one still in integration when I left. Both were experiment-gated, so a lot of the work was making sure every group of users saw exactly what it was supposed to.</p>
+              <p class="lede">I spent the summer in Shanghai writing Kotlin in ByteDance's shared Android codebase. Both of my features were for the friend side of the product: one shipped to users, one still in integration when I left. Both were experiment-gated, so a lot of the work was making sure every group of users saw exactly what it was supposed to.</p>
 
               <div class="feat">
-                <div class="feat-head"><h4>A messaging bar in the friend feed</h4><span class="tag done">merged to release</span></div>
+                <div class="feat-head"><h4>A messaging bar in the friend feed</h4><span class="tag done">shipped</span></div>
                 <p>The goal was to replace the bottom action area of the friend feed's video page with a messaging bar, so you could reply, tap a suggested emoji or start a voice message without leaving the video. I owned most of the Android client.</p>
                 <ul class="points">
                   <li><b>Four explicit states.</b> Server signals on each video map to one client decision: keep the default bar, show the new bar with voice, show it without voice, or leave the area empty on purpose. Separate booleans would have let "can't show messaging" quietly turn into "show nothing."</li>
@@ -913,7 +913,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
                   <li><b>Checking the contract before reusing code.</b> An older feed presenter looked reusable, but its bind method was final and cast the model to a different type, which meant a compile error or a runtime cast failure. I built on the detail-page presenter instead.</li>
                   <li><b>Lifecycle under view reuse.</b> The page reuses a visible view before binding the next video asynchronously. I cleared the previous video's context before each bind so a stale view can't take a click, removed observers on unbind, and only logged an impression once a page was actually selected.</li>
                   <li><b>A crash in an optional cache.</b> Emoji suggestions read a Fragment-level cache, but this page can have no Fragment. I traced the null from a Java getter through Kotlin's platform types, made the cache optional, and kept the network request going.</li>
-                  <li><b>A bug only the control group could see.</b> After merge, control users got an empty bar on their own videos. A content rule ran before the cohort check. The fix was 36 lines: check the cohort first, plus a remote switch so the fix itself could be rolled back without a new release. Try it below.</li>
+                  <li><b>A bug only the control group could see.</b> During rollout, control users got an empty bar on their own videos. A content rule ran before the cohort check. The fix was 36 lines: check the cohort first, plus a remote switch so the fix itself could be rolled back without a new release. Try it below.</li>
                 </ul>
 
                 <div class="cohort" id="cohort">
@@ -1602,7 +1602,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       seen: [["COMET", "comet"], ["Squeeze", "squeeze"], ["genesis", "genesis"], ["UrAgent", "uragent"]] },
     { name: "Android",
       body: [
-        "At ByteDance I built a messaging bar for a short-video friend feed and owned most of the Android client: an explicit state model for experiment signals, integration with the messaging stack through its exported interfaces, lifecycle-safe handling of reused views, and a cohort fix with a remote rollback switch. It was merged into the release branch.",
+        "At ByteDance I built a messaging bar for a short-video friend feed and owned most of the Android client: an explicit state model for experiment signals, integration with the messaging stack through its exported interfaces, lifecycle-safe handling of reused views, and a cohort fix with a remote rollback switch. It shipped through A/B experiments and staged rollout.",
         "I also built a redesigned home-screen widget install guide with Lottie, isolated to one app behind a small interface, and simplified my own first draft by deleting a 220-line custom view."
       ],
       points: [
