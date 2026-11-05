@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Henry He</title>
-<meta name="description" content="Henry He, Columbia CS '28. ML systems, inference infra, distributed systems and interpretability.">
+<meta name="description" content="Henry He, Columbia CS '28. Infrastructure SWE: distributed storage, AI inference, ML systems, backend and Android.">
 <link rel="canonical" href="https://henrycolumbiahe.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='42%25' r='55%25'%3E%3Cstop offset='0' stop-color='%23fff6dc'/%3E%3Cstop offset='.5' stop-color='%23ffd27a'/%3E%3Cstop offset='1' stop-color='%23ff8a54'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#fadfb4">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://henrycolumbiahe.com/">
 <meta property="og:title" content="Henry He">
-<meta property="og:description" content="Henry He, Columbia CS '28. ML systems, inference infra, distributed systems and interpretability.">
+<meta property="og:description" content="Henry He, Columbia CS '28. Infrastructure SWE: distributed storage, AI inference, ML systems, backend and Android.">
 <meta property="og:image" content="https://henrycolumbiahe.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -507,6 +507,57 @@ h4 { font-family: var(--body); font-weight: 650; font-size: 1rem; margin: 0 0 6p
 .cpp-head .stack { margin-top: 4px; }
 @media (max-width: 520px) { .stack > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
 
+/* ---------- toolbox ---------- */
+.lately { padding-block: 40px 56px; }
+.toolbox { padding-block: 8px 110px; display: flex; flex-direction: column; gap: 20px; }
+.tb { display: flex; flex-direction: column; max-width: 1040px; border-top: 1.5px solid rgba(43, 24, 32, .2); }
+.tb-row { display: grid; grid-template-columns: 11.5em minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1.5px solid rgba(43, 24, 32, .12); }
+.tb-label { font-weight: 650; font-size: .95rem; }
+.tb-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tb-chip {
+  border: 0; cursor: pointer; padding: 5px 13px; border-radius: 999px; font-size: .88rem; font-weight: 600;
+  background: rgba(255, 255, 255, .5); box-shadow: inset 0 0 0 1px rgba(43, 24, 32, .16);
+  transition: background .25s, color .25s, transform .35s var(--ease-spring);
+}
+.tb-chip:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .8); }
+.tb-chip[aria-pressed="true"] { background: var(--ink); color: var(--sky-1); box-shadow: none; }
+.tb-used { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 12px 16px; margin: 4px 0 8px; border-radius: 14px; background: rgba(255, 246, 236, .6); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6); font-size: .92rem; }
+.tb-used.swap { animation: panelIn .4s var(--ease-out) both; }
+.tb-used button { border: 0; background: none; padding: 0; cursor: pointer; font-weight: 650; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoration-color: rgba(43, 24, 32, .35); }
+.tb-used button:hover { text-decoration-color: var(--ink); }
+.row-tech { grid-column: 2; grid-row: 2; font-size: .82rem; font-weight: 600; color: var(--ink); opacity: .7; margin-top: -14px; }
+.stack-top { border-top: 0; padding-top: 0; }
+.stack dd span { background: rgba(255, 255, 255, .55); box-shadow: inset 0 0 0 1px rgba(43, 24, 32, .16); font-weight: 600; }
+.stack dt { color: var(--ink); }
+.built { display: grid; grid-template-columns: 8em minmax(0, 1fr); gap: 16px; align-items: start; max-width: 1040px; padding: 18px 22px; border-radius: 20px; background: rgba(255, 246, 236, .5); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5); }
+.built h4 { font-family: var(--display); font-weight: 400; font-size: var(--t-md); margin: 0; }
+.stack-wide { border-top: 0; padding-top: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; }
+.stack-wide > div { grid-template-columns: 6.5em minmax(0, 1fr); }
+
+/* ---------- hobbies ---------- */
+.hobbies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 32px; align-content: start; }
+.hob { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; }
+.hob svg { width: 32px; height: 32px; fill: none; stroke: var(--sky-1); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .6s var(--ease-spring); }
+.hob svg .fill { fill: #ff8a54; stroke: none; }
+.hob:hover svg { transform: rotate(-14deg) scale(1.08); }
+.hob-baseball:hover svg { transform: rotate(200deg); }
+.hob h3 { font-size: var(--t-md); margin-bottom: 4px; }
+.hob p { color: var(--muted); font-size: .97rem; }
+.also { color: var(--muted); max-width: 46em; }
+
+@media (max-width: 860px) {
+  .row-tech { grid-column: 1; grid-row: 3; margin-top: 0; }
+  .built, .stack-wide { grid-template-columns: minmax(0, 1fr); }
+  .built { gap: 8px; }
+}
+@media (max-width: 640px) {
+  .tb-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .hobbies { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+@media (max-width: 520px) {
+  .row-tech { grid-row: 4; }
+}
+
 /* ---------- projects ---------- */
 .projects { padding-block: 40px 100px; display: flex; flex-direction: column; gap: 44px; }
 .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: start; max-width: 1040px; }
@@ -547,7 +598,7 @@ h4 { font-family: var(--body); font-weight: 650; font-size: 1rem; margin: 0 0 6p
 /* ---------- life ---------- */
 .life { position: relative; z-index: 1; padding-block: 30px 120px; display: flex; flex-direction: column; gap: 44px; }
 .life-intro { color: var(--muted); max-width: 34em; margin-top: -24px; }
-.life-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 56px; max-width: 1040px; }
+.life-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.5fr); gap: 56px; max-width: 1080px; }
 .shelf-wrap { display: flex; flex-direction: column; gap: 14px; }
 .shelf {
   display: flex; align-items: flex-end; gap: 6px; height: 230px;
@@ -683,8 +734,20 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
         </div>
         <div>
           <h3>Open for Summer 2027</h3>
-          <p>Most excited about AI infra and model serving, inference, agent systems and distributed backends, but open to any SWE team. Free May 14 to September 7 and happy to relocate.</p>
+          <p>Looking for an infrastructure SWE internship: distributed storage and databases, backend and cloud, AI infrastructure and inference, ML systems, agents or Android. Free May 14 to September 7 and happy to relocate.</p>
         </div>
+      </div>
+    </div>
+    <div class="in toolbox" id="toolbox">
+      <div class="group-head"><h2 class="h2-sm">Toolbox</h2><p>Tap a tool to see where I used it</p></div>
+      <div class="tb" id="tb">
+        <div class="tb-row"><span class="tb-label">Languages</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Paxos and sharded KV&quot;, &quot;paxos&quot;]]">Go</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;], [&quot;Trizen AI&quot;, &quot;b-tz&quot;], [&quot;Helios&quot;, &quot;b-hel&quot;], [&quot;Squeeze&quot;, &quot;squeeze&quot;], [&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">Python</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;C++ labs&quot;, &quot;cpp&quot;]]">C++</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;C++ labs&quot;, &quot;cpp&quot;]]">C</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Kotlin</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance (Java and Kotlin interop)&quot;, &quot;b-bd&quot;]]">Java</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">TypeScript</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">SQL</button></div></div>
+        <div class="tb-row"><span class="tb-label">AI infra and ML</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;], [&quot;CRIS Lab&quot;, &quot;b-cris&quot;], [&quot;EleutherAI&quot;, &quot;b-eleuther&quot;]]">PyTorch</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">CUDA</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">SGLang</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">vLLM</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">KV-cache eviction</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">HF Transformers</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">SAE-Lens</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Trizen AI&quot;, &quot;b-tz&quot;]]">Fun-ASR</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;EleutherAI&quot;, &quot;b-eleuther&quot;]]">Inspect AI</button></div></div>
+        <div class="tb-row"><span class="tb-label">Distributed and storage</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Paxos KV store&quot;, &quot;paxos&quot;]]">Paxos</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Primary/backup and Paxos&quot;, &quot;paxos&quot;]]">Replication</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Sharded KV store&quot;, &quot;paxos&quot;]]">Sharding</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;MapReduce&quot;, &quot;paxos&quot;]]">MapReduce</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Model checking Paxos&quot;, &quot;paxos&quot;]]">Model checking</button></div></div>
+        <div class="tb-row"><span class="tb-label">Backend and data</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">FastAPI</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">Flask</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;], [&quot;Squeeze&quot;, &quot;squeeze&quot;]]">PostgreSQL</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">Query tuning</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">scikit-learn</button></div></div>
+        <div class="tb-row"><span class="tb-label">Cloud and clusters</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">GCP</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">A100 GPUs</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;], [&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">Slurm</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">AWS Bedrock</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;C++ labs&quot;, &quot;cpp&quot;], [&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">Linux</button></div></div>
+        <div class="tb-row"><span class="tb-label">Agents</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">LangGraph</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">Tool calling</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">AppWorld</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;UrAgent&quot;, &quot;uragent&quot;]]">Multi-turn RL</button></div></div>
+        <div class="tb-row"><span class="tb-label">Android</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Android SDK</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Experiments</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Remote config</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Lottie</button></div></div>
       </div>
     </div>
   </section>
@@ -700,67 +763,13 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       </div>
 
       <div class="group">
-        <div class="group-head"><h2 class="h2">Research</h2><p>Tap a row to open it</p></div>
-        <ul class="rows">
-          <li class="row open">
-            <button class="row-btn" type="button" aria-expanded="true" aria-controls="r-eleuther" id="b-eleuther">
-              <span class="row-org">EleutherAI</span>
-              <span class="row-role">Research Fellow, Summer of Open AI Research</span>
-              <span class="row-when">Jul–Aug 2026</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="row-body" id="r-eleuther" role="region" aria-labelledby="b-eleuther"><div><div class="pad">
-              <p class="lede">Models sometimes get drug-toxicity questions right for the wrong reasons. I wanted to know whether a model actually represents the chemistry, or is matching surface cues that happen to line up with the answer.</p>
-              <div class="facets">
-                <div>
-                  <h4>What I did</h4>
-                  <p>Extracted residual-stream activations on drug-toxicity benchmarks and trained linear probes on them to see how scientific concepts are laid out inside the model. Then I tried to break the probes, varying prompts and contexts and building adversarial examples meant to pull the real concept apart from the cues.</p>
-                </div>
-                <div>
-                  <h4>Why it matters</h4>
-                  <p>A probe with high accuracy isn't evidence of understanding if it's tracking a spurious feature. Measuring probe sensitivity and concept separability under pressure is how you tell the two apart.</p>
-                </div>
-              </div>
-              <div class="chips"><span class="chip">Remote</span><span class="chip">PyTorch</span><span class="chip">Inspect AI</span><span class="chip">residual stream</span><span class="chip">linear probes</span></div>
-            </div></div></div>
-          </li>
-          <li class="row">
-            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-cris" id="b-cris">
-              <span class="row-org">CRIS Lab</span>
-              <span class="row-role">AI Research Engineer, Columbia</span>
-              <span class="row-when">Jan–May 2026</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="row-body" id="r-cris" role="region" aria-labelledby="b-cris"><div><div class="pad">
-              <p class="lede">Does retrieval-augmented generation switch on reusable reasoning routines inside a model? I tested that with sparse autoencoder features on Gemma-3-27B at Columbia's Complex Resilient Intelligent Systems Lab.</p>
-              <div class="facets three">
-                <div>
-                  <h4>Setup</h4>
-                  <p>Gemma-3-27B with pretrained SAEs from SAE-Lens on a Slurm GPU cluster. I built the PyTorch and Hugging Face Transformers pipelines for inference and evaluation, and used torch.profiler to keep the GPU jobs efficient.</p>
-                </div>
-                <div>
-                  <h4>What happened</h4>
-                  <p>One candidate feature passed ablation and differential-activation tests: removing it changed behavior, and it activated differently with retrieval than without. It then failed a pre-registered steering-specificity test. Turning it up didn't specifically produce the behavior.</p>
-                </div>
-                <div>
-                  <h4>What I took from it</h4>
-                  <p>Necessary isn't the same as sufficient. Following Makelov et al., a feature can matter when it's removed without being what drives the behavior on its own. That gap is exactly why the steering test was pre-registered.</p>
-                </div>
-              </div>
-              <p>Earlier in the semester I used PCA, normalization and probing to compare how the model represents the same math problems posed in plain language and in symbols, with controlled accuracy benchmarks across both formats.</p>
-              <div class="chips"><span class="chip">New York</span><span class="chip">Gemma-3-27B</span><span class="chip">SAE-Lens</span><span class="chip">causal interventions</span><span class="chip">torch.profiler</span><span class="chip">Slurm</span></div>
-            </div></div></div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="group">
-        <div class="group-head"><h2 class="h2">Work</h2><p>Three internships, two continents</p></div>
+        <div class="group-head"><h2 class="h2">Work</h2><p>Three internships, two continents. Tap a row to open it.</p></div>
         <ul class="rows">
           <li class="row open">
             <button class="row-btn" type="button" aria-expanded="true" aria-controls="r-bd" id="b-bd">
               <span class="row-org">ByteDance</span>
               <span class="row-role">AI Full-Stack Engineer Intern, Douyin Social &amp; Messaging</span>
+              <span class="row-tech">Kotlin, Android, experiments, remote rollback</span>
               <span class="row-when">Jul–Sep 2026</span>
               <span class="plus" aria-hidden="true"></span>
             </button>
@@ -814,6 +823,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-tz" id="b-tz">
               <span class="row-org">Trizen AI</span>
               <span class="row-role">AI Engineer Intern, medical speech recognition</span>
+              <span class="row-tech">Python, Fun-ASR, SFT, continued pretraining, eval design</span>
               <span class="row-when">May–Jul 2026</span>
               <span class="plus" aria-hidden="true"></span>
             </button>
@@ -869,6 +879,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-hel" id="b-hel">
               <span class="row-org">Helios Healthcare</span>
               <span class="row-role">Software Engineer Intern</span>
+              <span class="row-tech">Python, Flask, PostgreSQL, scikit-learn</span>
               <span class="row-when">Nov 2025–Apr 2026</span>
               <span class="plus" aria-hidden="true"></span>
             </button>
@@ -880,6 +891,63 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
                 <li><b>Better recommendations.</b> scikit-learn ranking models that made facility recommendations <b class="n">20%</b> more relevant.</li>
               </ul>
               <div class="chips"><span class="chip">New York</span><span class="chip">Flask</span><span class="chip">PostgreSQL</span><span class="chip">SQL tuning</span><span class="chip">scikit-learn</span></div>
+            </div></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <div class="group-head"><h2 class="h2">Research</h2><p>Interpretability, mostly</p></div>
+        <ul class="rows">
+          <li class="row">
+            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-eleuther" id="b-eleuther">
+              <span class="row-org">EleutherAI</span>
+              <span class="row-role">Research Fellow, Summer of Open AI Research</span>
+              <span class="row-tech">PyTorch, Inspect AI, linear probes</span>
+              <span class="row-when">Jul–Aug 2026</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="row-body" id="r-eleuther" role="region" aria-labelledby="b-eleuther"><div><div class="pad">
+              <p class="lede">Models sometimes get drug-toxicity questions right for the wrong reasons. I wanted to know whether a model actually represents the chemistry, or is matching surface cues that happen to line up with the answer.</p>
+              <div class="facets">
+                <div>
+                  <h4>What I did</h4>
+                  <p>Extracted residual-stream activations on drug-toxicity benchmarks and trained linear probes on them to see how scientific concepts are laid out inside the model. Then I tried to break the probes, varying prompts and contexts and building adversarial examples meant to pull the real concept apart from the cues.</p>
+                </div>
+                <div>
+                  <h4>Why it matters</h4>
+                  <p>A probe with high accuracy isn't evidence of understanding if it's tracking a spurious feature. Measuring probe sensitivity and concept separability under pressure is how you tell the two apart.</p>
+                </div>
+              </div>
+              <div class="chips"><span class="chip">Remote</span><span class="chip">PyTorch</span><span class="chip">Inspect AI</span><span class="chip">residual stream</span><span class="chip">linear probes</span></div>
+            </div></div></div>
+          </li>
+          <li class="row">
+            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-cris" id="b-cris">
+              <span class="row-org">CRIS Lab</span>
+              <span class="row-role">AI Research Engineer, Columbia</span>
+              <span class="row-tech">PyTorch, Gemma-3-27B, sparse autoencoders, Slurm</span>
+              <span class="row-when">Jan–May 2026</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="row-body" id="r-cris" role="region" aria-labelledby="b-cris"><div><div class="pad">
+              <p class="lede">Does retrieval-augmented generation switch on reusable reasoning routines inside a model? I tested that with sparse autoencoder features on Gemma-3-27B at Columbia's Complex Resilient Intelligent Systems Lab.</p>
+              <div class="facets three">
+                <div>
+                  <h4>Setup</h4>
+                  <p>Gemma-3-27B with pretrained SAEs from SAE-Lens on a Slurm GPU cluster. I built the PyTorch and Hugging Face Transformers pipelines for inference and evaluation, and used torch.profiler to keep the GPU jobs efficient.</p>
+                </div>
+                <div>
+                  <h4>What happened</h4>
+                  <p>One candidate feature passed ablation and differential-activation tests: removing it changed behavior, and it activated differently with retrieval than without. It then failed a pre-registered steering-specificity test. Turning it up didn't specifically produce the behavior.</p>
+                </div>
+                <div>
+                  <h4>What I took from it</h4>
+                  <p>Necessary isn't the same as sufficient. Following Makelov et al., a feature can matter when it's removed without being what drives the behavior on its own. That gap is exactly why the steering test was pre-registered.</p>
+                </div>
+              </div>
+              <p>Earlier in the semester I used PCA, normalization and probing to compare how the model represents the same math problems posed in plain language and in symbols, with controlled accuracy benchmarks across both formats.</p>
+              <div class="chips"><span class="chip">New York</span><span class="chip">Gemma-3-27B</span><span class="chip">SAE-Lens</span><span class="chip">causal interventions</span><span class="chip">torch.profiler</span><span class="chip">Slurm</span></div>
             </div></div></div>
           </li>
         </ul>
@@ -896,13 +964,6 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           <p class="sub">Co-optimizing memory efficiency and test-time compute. Fall 2026, in progress.</p>
           <p>Agents run long, and their KV cache grows with every step. Compressing the cache frees memory and compute for more attempts at a task, but extra attempts only help if what's left in the cache is still enough to solve it.</p>
           <p>COMET asks how to split a fixed inference budget between keeping memory, taking more attempts, and paying to recover what was thrown away. Four of us are building it for Dr. Kaoutar El Maghraoui's graduate seminar on scaling LLM systems, and I own experiment setup and execution.</p>
-          <dl class="stack">
-            <div><dt>Language</dt><dd><span>Python</span></dd></div>
-            <div><dt>Serving</dt><dd><span>SGLang (Mini-SGLang)</span><span>vLLM</span><span>KV-cache management</span><span>inference scheduling</span><span>quantization</span><span>checkpoint/restore</span></dd></div>
-            <div><dt>ML</dt><dd><span>PyTorch</span><span>CUDA</span><span>Qwen3-8B in BF16</span><span>StreamingLLM, R-KV, AgentKV</span></dd></div>
-            <div><dt>Infra</dt><dd><span>GCP</span><span>A100 80GB GPUs</span><span>Slurm</span></dd></div>
-            <div><dt>Evaluation</dt><dd><span>AppWorld agent benchmark</span><span>latency and throughput</span><span>peak GPU memory</span><span>bootstrap confidence intervals</span></dd></div>
-          </dl>
         </div>
         <div class="toy">
           <div class="toy-top">
@@ -924,6 +985,14 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           <p class="toy-note">StreamingLLM keeps the first few tokens as <span class="sinklabel">attention sinks</span> plus the most recent ones. At 25% the sentence forgets who it was about, which is roughly the problem an agent has on step 40.</p>
         </div>
       </div>
+
+      <div class="built"><h4>Built with</h4><dl class="stack stack-wide">
+            <div><dt>Language</dt><dd><span>Python</span></dd></div>
+            <div><dt>Serving</dt><dd><span>SGLang (Mini-SGLang)</span><span>vLLM</span><span>KV-cache management</span><span>inference scheduling</span><span>quantization</span><span>checkpoint/restore</span></dd></div>
+            <div><dt>ML</dt><dd><span>PyTorch</span><span>CUDA</span><span>Qwen3-8B in BF16</span><span>StreamingLLM, R-KV, AgentKV</span></dd></div>
+            <div><dt>Infra</dt><dd><span>GCP</span><span>A100 80GB GPUs</span><span>Slurm</span></dd></div>
+            <div><dt>Evaluation</dt><dd><span>AppWorld agent benchmark</span><span>latency and throughput</span><span>peak GPU memory</span><span>bootstrap confidence intervals</span></dd></div>
+          </dl></div>
 
       <div class="dive">
         <div class="facets four">
@@ -1021,6 +1090,12 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           <div class="side-a">
             <h4 class="course">Distributed systems, in Go</h4>
             <p>One key-value store, rebuilt five times. Each version survives more failure than the last, ending in the same basic architecture behind Spanner and most modern storage systems.</p>
+            <dl class="stack stack-top">
+              <div><dt>Language</dt><dd><span>Go</span></dd></div>
+              <div><dt>Built with</dt><dd><span>RPC</span><span>goroutines</span><span>concurrency control</span></dd></div>
+              <div><dt>Concepts</dt><dd><span>Paxos consensus</span><span>primary/backup replication</span><span>sharding and shard migration</span><span>MapReduce</span><span>fault tolerance</span></dd></div>
+              <div><dt>Testing</dt><dd><span>failure injection</span><span>crash recovery</span><span>model checking</span></dd></div>
+            </dl>
             <ol class="track">
               <li>
                 <div class="track-head"><b>MapReduce</b><span class="tag done">done</span></div>
@@ -1043,12 +1118,6 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
                 <p>A bare-bones model checker that explores message orderings and failures to check that Paxos never decides two different values. Testing shows the bugs you thought of; model checking finds the ones you didn't.</p>
               </li>
             </ol>
-            <dl class="stack">
-              <div><dt>Language</dt><dd><span>Go</span></dd></div>
-              <div><dt>Built with</dt><dd><span>RPC</span><span>goroutines</span><span>concurrency control</span></dd></div>
-              <div><dt>Concepts</dt><dd><span>Paxos consensus</span><span>primary/backup replication</span><span>sharding and shard migration</span><span>MapReduce</span><span>fault tolerance</span></dd></div>
-              <div><dt>Testing</dt><dd><span>failure injection</span><span>crash recovery</span><span>model checking</span></dd></div>
-            </dl>
           </div>
           <div class="side-b">
             <div class="cluster">
@@ -1118,38 +1187,38 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           <article class="card" id="squeeze">
             <div class="card-head"><h4>Squeeze</h4><span class="award">2nd place</span></div>
             <p class="sub">Morgan Stanley Code to Give, March 2026</p>
-            <p>A full-stack volunteer platform built for a nonprofit during a hackathon. I owned the FastAPI and PostgreSQL backend and the agent integration: LangGraph agents on AWS Bedrock that draft campaign content and outreach through structured tool calls, with guardrails and a human approval step before anything goes out.</p>
-            <dl class="stack">
+            <dl class="stack stack-top">
               <div><dt>Backend</dt><dd><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>REST APIs</span></dd></div>
               <div><dt>Frontend</dt><dd><span>Next.js</span><span>TypeScript</span></dd></div>
               <div><dt>AI</dt><dd><span>LangGraph</span><span>AWS Bedrock</span><span>structured tool calls</span><span>guardrails</span><span>human approval</span></dd></div>
             </dl>
+            <p>A full-stack volunteer platform built for a nonprofit during a hackathon. I owned the FastAPI and PostgreSQL backend and the agent integration: LangGraph agents on AWS Bedrock that draft campaign content and outreach through structured tool calls, with guardrails and a human approval step before anything goes out.</p>
           </article>
           <article class="card" id="genesis">
             <div class="card-head"><h4>genesis</h4><span class="status-tag">in progress</span></div>
             <p class="sub">With a collaborator</p>
-            <p>Infrastructure for capability improvement that compounds across organizations. Model weights stay fixed. What improves is the library of executable tools that organizations build, select, compose and repair, so experience from earlier tool-building makes later creation, verification and repair better.</p>
-            <p>We keep three claims separate: tools pile up, tools get reused, and the tool-making process itself improves. Each needs its own evidence.</p>
-            <dl class="stack">
+            <dl class="stack stack-top">
               <div><dt>Focus</dt><dd><span>agent infrastructure</span><span>tool composition</span><span>verification and repair</span></dd></div>
             </dl>
+            <p>Infrastructure for capability improvement that compounds across organizations. Model weights stay fixed. What improves is the library of executable tools that organizations build, select, compose and repair, so experience from earlier tool-building makes later creation, verification and repair better.</p>
+            <p>We keep three claims separate: tools pile up, tools get reused, and the tool-making process itself improves. Each needs its own evidence.</p>
           </article>
           <article class="card" id="auscultai">
             <div class="card-head"><h4>AuscultAI</h4><span class="status-tag">hackathon</span></div>
             <p class="sub">Low-cost cardiac screening</p>
-            <p>A Raspberry Pi and an ESP32 capture heart sounds, and a DSP pipeline turns them into mel-spectrograms for analysis. Hardware, signal processing and ML in a single build.</p>
-            <dl class="stack">
+            <dl class="stack stack-top">
               <div><dt>Hardware</dt><dd><span>Raspberry Pi</span><span>ESP32</span></dd></div>
               <div><dt>Signal processing</dt><dd><span>DSP</span><span>mel-spectrograms</span></dd></div>
             </dl>
+            <p>A Raspberry Pi and an ESP32 capture heart sounds, and a DSP pipeline turns them into mel-spectrograms for analysis. Hardware, signal processing and ML in a single build.</p>
           </article>
           <article class="card" id="uragent">
             <div class="card-head"><h4>UrAgent</h4><span class="status-tag">course project</span></div>
             <p class="sub">With teammates</p>
-            <p>A replication of WebAgent-R1, which trains LLM web agents end to end with multi-turn reinforcement learning.</p>
-            <dl class="stack">
+            <dl class="stack stack-top">
               <div><dt>Focus</dt><dd><span>multi-turn reinforcement learning</span><span>LLM web agents</span><span>paper replication</span></dd></div>
             </dl>
+            <p>A replication of WebAgent-R1, which trains LLM web agents end to end with multi-turn reinforcement learning.</p>
           </article>
         </div>
         <p class="sub">More on <a href="https://github.com/HenryWashuHe">GitHub</a>.</p>
@@ -1167,7 +1236,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <div class="in life">
         <h2 class="h2">Off the clock</h2>
         <p class="life-intro">The stuff that doesn't fit on a resume.</p>
-        <p class="hunt"><span class="hunt-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="hunt">Three constellations are hidden in this sky. Move your cursor around to find them.</span></p>
+        <p class="hunt"><span class="hunt-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="hunt">Four constellations are hidden in this sky. Move your cursor around to find them.</span></p>
         <div class="life-grid">
           <div class="shelf-wrap">
             <div class="shelf" id="shelf" role="group" aria-label="Writers I keep going back to">
@@ -1179,21 +1248,16 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             </div>
             <p class="shelf-cap" id="shelf-cap">Pull a book off the shelf.</p>
           </div>
-          <div class="bits">
-            <div>
-              <h3>Space</h3>
-              <p>Subteam lead at Columbia Space Initiative on an AR project for NASA's Lunar Terrain Vehicle. We were one of 10 university teams invited to present at Johnson Space Center. Cosmology is a side interest.</p>
-            </div>
-            <div>
-              <h3>Competitive programming</h3>
-              <p>Contest problems are how I keep my algorithms sharp.</p>
-            </div>
-            <div>
-              <h3>Hack WashU</h3>
-              <p>Vice president of the WashU hackathon.</p>
-            </div>
+          <div class="hobbies">
+            <div class="hob hob-baseball"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10.5"/><path d="M7.6 8.2c2.8 2.6 2.8 9 0 11.6M20.4 8.2c-2.8 2.6-2.8 9 0 11.6"/></svg><div><h3>Baseball</h3><p>I played as a student athlete with MLB China.</p></div></div>
+            <div class="hob hob-snooker"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="7.5" r="3.2" class="fill"/><circle cx="10.6" cy="13.5" r="3.2"/><circle cx="17.4" cy="13.5" r="3.2"/><circle cx="7.2" cy="19.5" r="3.2"/><circle cx="14" cy="19.5" r="3.2"/><circle cx="20.8" cy="19.5" r="3.2"/></svg><div><h3>Snooker</h3><p>My favorite game to play and to watch.</p></div></div>
+            <div class="hob hob-gym"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M9 14h10"/><rect x="5" y="8.5" width="4" height="11" rx="1.2"/><rect x="19" y="8.5" width="4" height="11" rx="1.2"/><path d="M3 12v4M25 12v4"/></svg><div><h3>Gym</h3><p>In the gym most weeks.</p></div></div>
+            <div class="hob hob-food"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h20a10 9 0 0 1-20 0z"/><path d="M15 12 23 4M18 12l7-6"/></svg><div><h3>Food</h3><p>Big foodie, and New York is a good city for it.</p></div></div>
+            <div class="hob hob-travel"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10.5"/><ellipse cx="14" cy="14" rx="4.5" ry="10.5"/><path d="M3.5 14h21"/></svg><div><h3>Travel</h3><p>I travel whenever I get the chance.</p></div></div>
+            <div class="hob hob-space"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="6"/><ellipse cx="14" cy="14" rx="12" ry="4" transform="rotate(-20 14 14)"/></svg><div><h3>Space</h3><p>Subteam lead at Columbia Space Initiative on an AR project for NASA's Lunar Terrain Vehicle, one of 10 university teams invited to present at Johnson Space Center.</p></div></div>
           </div>
         </div>
+        <p class="also">Also: competitive programming to keep my algorithms sharp, and vice president of Hack WashU.</p>
       </div>
     </section>
 
@@ -1224,11 +1288,12 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     </div>
     <dl class="facts">
       <dt>Who</dt><dd>Columbia CS, class of 2028, 3.96 GPA</dd>
-      <dt>Looking for</dt><dd>A Summer 2027 SWE internship. Most excited about AI infra and model serving, inference, agent systems and distributed backends, and open to any team.</dd>
+      <dt>Looking for</dt><dd>A Summer 2027 infrastructure SWE internship: distributed storage and databases, backend and cloud, AI infrastructure and inference optimization, ML systems, agent systems or Android.</dd>
       <dt>Available</dt><dd>May 14 to September 7, 2027. Happy to relocate.</dd>
       <dt>Experience</dt><dd>ByteDance (Android messaging, Douyin Social &amp; Messaging), Trizen AI (training a medical speech recognition model), Helios Healthcare (backend), EleutherAI SoAR fellow, Columbia CRIS Lab</dd>
       <dt>Building now</dt><dd>COMET: KV-cache eviction and recovery for long-horizon agents on Mini-SGLang</dd>
       <dt>Systems</dt><dd>Paxos and sharded key-value stores in Go. O(1) template caches and a make clone in C++20.</dd>
+      <dt>Outside work</dt><dd>Baseball (student athlete with MLB China), snooker, the gym, food and travel</dd>
       <dt>Languages</dt><dd>Python, Go, C/C++, Kotlin, Java, TypeScript, SQL</dd>
       <dt>Stack</dt><dd>PyTorch, CUDA, SGLang, vLLM, FastAPI, Flask, PostgreSQL, Android, GCP, AWS, Docker</dd>
     </dl>
@@ -1332,7 +1397,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
 
   /* ---- areas explorer ---- */
   var AREAS = [
-    { name: "AI inference & infra",
+    { name: "AI infra & inference",
       body: [
         "Long-horizon agents are a serving problem as much as a modeling one. Every tool call adds tokens, the KV cache grows with the whole trajectory, and GPU memory runs out long before the model does.",
         "In a graduate Scaling LLM Systems seminar I'm extending Mini-SGLang to serve Qwen3 on A100s on GCP, scheduled with Slurm. KV-cache eviction (StreamingLLM, R-KV, AgentKV), checkpoint/restore of agent and cache state, and dynamic cache rebuilding all run side by side in one engine, benchmarked on latency, throughput, peak GPU memory and AppWorld task success."
@@ -1342,9 +1407,9 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
         "Memory accounting that includes transient peaks, so a rebuild that wouldn't fit is refused instead of quietly allowed",
         "Saved trajectories and frozen configs, so expensive sweeps never have to be rerun"
       ],
-      tools: ["PyTorch", "CUDA", "SGLang", "vLLM", "inference scheduling", "quantization", "Slurm", "GCP"],
+      tools: ["PyTorch", "CUDA", "SGLang", "vLLM", "KV-cache management", "inference scheduling", "quantization", "GCP", "Slurm"],
       seen: [["COMET", "comet"]] },
-    { name: "Distributed systems",
+    { name: "Distributed storage",
       body: [
         "In Columbia's distributed systems course I built one key-value store up from scratch in Go: MapReduce with stateless workers, then primary/backup replication, then consensus with Paxos, then sharding across Paxos replica groups, the same basic shape as Spanner. The last step was a small model checker that explores Paxos failure cases automatically.",
         "In C++ for C Programmers I wrote O(1) LRU and LFU caches as generic templates, a make clone that resolves dependency graphs and caches its own parse, and enough copy and move semantics work to know what the compiler does with every object. All of it ran valgrind-clean."
@@ -1352,10 +1417,10 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       points: [
         "Replicas apply the same operations in the same order, even with dropped and delayed messages",
         "Losing a minority of servers is invisible to clients, and losing a majority stalls writes instead of corrupting them",
-        "Constant-time data structures with no hidden copies of expensive values",
+        "Shards move between replica groups while clients keep reading and writing",
         "Ownership is explicit, so nothing leaks when an exception fires halfway through"
       ],
-      tools: ["Go", "Paxos", "replication", "sharding", "MapReduce", "model checking", "C++20", "templates", "move semantics", "valgrind"],
+      tools: ["Go", "Paxos", "replication", "sharding", "MapReduce", "model checking", "C++20", "templates", "valgrind"],
       seen: [["Distributed systems labs", "paxos"], ["C++ labs", "cpp"]] },
     { name: "ML systems",
       body: [
@@ -1363,26 +1428,38 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
         "At Trizen I trained a medical speech recognition model built on Alibaba's Fun-ASR: a data pipeline over 500+ hours of clinical audio with noise mixing matched to deployment, SFT plus continued pretraining on the encoder, extra decoder weight on rare medical tokens, and a new benchmark that scores medical-term errors more heavily than everyday ones."
       ],
       points: [
-        "Controlled benchmarks: the same math problems in plain language and in symbols, so format is the only variable",
+        "Training data that looks like what the deployed model will actually hear",
         "Metrics that match the downstream use, not just the leaderboard default",
         "Pre-registered interventions, so an experiment is actually allowed to fail",
         "Evaluation tooling that gives the same answer on every run and every machine"
       ],
-      tools: ["PyTorch", "HF Transformers", "SAE-Lens", "torch.profiler", "Slurm", "Inspect AI", "ASR"],
-      seen: [["CRIS Lab", "b-cris"], ["EleutherAI", "b-eleuther"], ["Trizen AI", "b-tz"]] },
-    { name: "Backend",
+      tools: ["PyTorch", "HF Transformers", "Fun-ASR", "SAE-Lens", "torch.profiler", "Slurm", "Inspect AI"],
+      seen: [["Trizen AI", "b-tz"], ["CRIS Lab", "b-cris"], ["EleutherAI", "b-eleuther"]] },
+    { name: "Backend, data & cloud",
       body: [
         "At Helios I built Flask REST APIs and PostgreSQL pipelines that ingest, normalize and serve CMS data on 15,000+ U.S. nursing homes for search, comparison and monitoring. Query tuning, indexing and pagination cut search latency 30%, and scikit-learn ranking models made recommendations 20% more relevant.",
-        "At Morgan Stanley Code to Give I owned the FastAPI and PostgreSQL backend for a Next.js platform, including the LangGraph agents running on AWS Bedrock. We placed 2nd."
+        "At Morgan Stanley Code to Give I owned the FastAPI and PostgreSQL backend for a Next.js platform with agents on AWS Bedrock, and we placed 2nd. On the cloud side, COMET runs on GCP A100s scheduled with Slurm, and my research runs on shared HPC clusters."
       ],
       points: [
         "Messy public data turned into clean, queryable tables",
         "Search that stays fast over thousands of facilities without loading everything at once",
-        "Agents that act through structured tool calls and wait for a human to approve"
+        "Compute treated as a budget: GPU hours, memory caps and queue time all count"
       ],
-      tools: ["Flask", "FastAPI", "PostgreSQL", "SQL tuning", "scikit-learn", "LangGraph", "AWS Bedrock"],
-      seen: [["Helios", "b-hel"], ["Squeeze", "squeeze"]] },
-    { name: "Product engineering",
+      tools: ["Python", "Flask", "FastAPI", "PostgreSQL", "SQL tuning", "scikit-learn", "GCP", "AWS", "Slurm"],
+      seen: [["Helios", "b-hel"], ["Squeeze", "squeeze"], ["COMET", "comet"]] },
+    { name: "Agent systems",
+      body: [
+        "Agents are where serving, memory and tooling problems meet. COMET is about keeping long-horizon agents affordable: managing a KV cache that grows with every tool call, and deciding when rebuilding lost context is worth the compute.",
+        "On the application side I built LangGraph agents on AWS Bedrock with structured tool calls, guardrails and human approval (Squeeze), replicated WebAgent-R1's multi-turn RL training for web agents (UrAgent), and I'm working on genesis, infrastructure for agents that build, verify and repair their own tool libraries."
+      ],
+      points: [
+        "Agent cost is dominated by context, so memory policy is a first-class design choice",
+        "Tools are called through schemas, not free text",
+        "A human signs off before an agent acts on the outside world"
+      ],
+      tools: ["SGLang", "AppWorld", "LangGraph", "AWS Bedrock", "tool calling", "multi-turn RL"],
+      seen: [["COMET", "comet"], ["Squeeze", "squeeze"], ["genesis", "genesis"], ["UrAgent", "uragent"]] },
+    { name: "Android",
       body: [
         "At ByteDance I built a messaging bar for a short-video friend feed and owned most of the Android client: an explicit state model for experiment signals, integration with the messaging stack through its exported interfaces, lifecycle-safe handling of reused views, and a cohort fix with a remote rollback switch. It was merged into the release branch.",
         "I also built a redesigned home-screen widget install guide with Lottie, isolated to one app behind a small interface, and simplified my own first draft by deleting a 220-line custom view."
@@ -1390,10 +1467,9 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       points: [
         "Control groups get exactly the control experience, checked before any feature rule",
         "Module boundaries stay intact: the feed owns the UI, messaging owns sending",
-        "A risky change ships with a way to turn it off remotely",
-        "Reuse only after checking the contract, not the class name"
+        "A risky change ships with a way to turn it off remotely"
       ],
-      tools: ["Kotlin", "Android", "modular architecture", "experiments", "remote config", "Lottie"],
+      tools: ["Kotlin", "Java interop", "Android", "modular architecture", "experiments", "remote config", "Lottie"],
       seen: [["ByteDance", "b-bd"]] }
   ];
   var list = document.getElementById("area-list"), panel = document.getElementById("area-panel");
@@ -1422,9 +1498,9 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     panel.classList.remove("swap"); void panel.offsetWidth; panel.classList.add("swap");
     if (tabs[i].scrollIntoView && list.scrollWidth > list.clientWidth) tabs[i].scrollIntoView({ block: "nearest", inline: "center", behavior: reduce ? "auto" : "smooth" });
   }
-  panel.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-go]"); if (!b) return;
-    var el = document.getElementById(b.getAttribute("data-go")), beh = reduce ? "auto" : "smooth";
+  function jumpTo(id) {
+    var el = document.getElementById(id), beh = reduce ? "auto" : "smooth";
+    if (!el) return;
     if (el.classList.contains("row-btn")) {
       var row = el.closest(".row");
       if (!row.classList.contains("open")) el.click();
@@ -1435,8 +1511,25 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       el.scrollIntoView({ behavior: beh, block: el.offsetHeight > window.innerHeight * 0.8 ? "start" : "center" });
       if (el.classList.contains("card")) { el.classList.remove("flash-card"); void el.offsetWidth; el.classList.add("flash-card"); }
     }
-  });
+  }
+  panel.addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) jumpTo(b.getAttribute("data-go")); });
   show(0);
+
+  /* ---- toolbox ---- */
+  (function () {
+    var tb = document.getElementById("tb"), chips = [].slice.call(tb.querySelectorAll(".tb-chip"));
+    var pop = document.createElement("div"); pop.className = "tb-used"; pop.setAttribute("aria-live", "polite");
+    function pick(c) {
+      chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
+      var used = JSON.parse(c.getAttribute("data-used"));
+      pop.innerHTML = "<b>" + esc(c.textContent) + "</b> shows up in " + used.map(function (u) { return '<button type="button" data-go="' + u[1] + '">' + esc(u[0]) + "</button>"; }).join("");
+      c.closest(".tb-row").after(pop);
+      pop.classList.remove("swap"); void pop.offsetWidth; pop.classList.add("swap");
+    }
+    chips.forEach(function (c) { c.addEventListener("click", function () { pick(c); }); });
+    pop.addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) jumpTo(b.getAttribute("data-go")); });
+    pick(chips.filter(function (c) { return c.textContent === "Go"; })[0]);
+  })();
 
   /* ---- COMET schedule ---- */
   (function () {
@@ -1712,16 +1805,18 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     { name: "The Lunar Rover", note: "For the NASA Lunar Terrain Vehicle team.", pts: [[0, 20], [95, 20], [110, 40], [-8, 40], [12, 56], [50, 56], [88, 56], [70, 20], [74, -6], [88, -12]],
       edges: [[0, 1], [1, 2], [2, 3], [3, 0], [3, 4], [4, 5], [5, 6], [6, 2], [7, 8], [8, 9]] },
     { name: "The Lighthouse", note: "For Virginia Woolf.", pts: [[0, 120], [40, 120], [32, 30], [8, 30], [20, 8], [96, -10], [96, 26]],
-      edges: [[0, 1], [1, 2], [2, 3], [3, 0], [3, 4], [4, 2], [4, 5], [4, 6]] }
+      edges: [[0, 1], [1, 2], [2, 3], [3, 0], [3, 4], [4, 2], [4, 5], [4, 6]] },
+    { name: "The Diamond", note: "For the MLB China years.", pts: [[0, 55], [55, 0], [0, -55], [-55, 0], [0, 4]],
+      edges: [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4]] }
   ];
   var huntEl = document.getElementById("hunt"), huntDots = document.querySelectorAll(".hunt-dots i"), foundN = 0;
-  if (window.matchMedia("(hover: none)").matches) huntEl.textContent = "Three constellations are hidden in this sky. Tap around to find them.";
+  if (window.matchMedia("(hover: none)").matches) huntEl.textContent = "Four constellations are hidden in this sky. Tap around to find them.";
   function placeCons() {
     var nr = night.getBoundingClientRect();
     var lifeTop = document.getElementById("life").getBoundingClientRect().top - nr.top;
     var conTop = document.getElementById("contact").getBoundingClientRect().top - nr.top;
     var sc = W < 700 ? 0.72 : 1;
-    var anchors = [[W * (W < 700 ? 0.78 : 0.6), lifeTop + 100 * sc], [W * (W < 700 ? 0.38 : 0.56), conTop - 70], [W * (W < 700 ? 0.6 : 0.8), conTop + 40]];
+    var anchors = [[W * (W < 700 ? 0.78 : 0.6), lifeTop + 100 * sc], [W * (W < 700 ? 0.38 : 0.56), conTop - 70], [W * (W < 700 ? 0.6 : 0.8), conTop + 40], [W * (W < 700 ? 0.16 : 0.18), conTop - 60]];
     CONS.forEach(function (c, i) {
       c.abs = c.pts.map(function (q) { return [anchors[i][0] + q[0] * sc, anchors[i][1] + q[1] * sc]; });
       var xs = c.abs.map(function (q) { return q[0]; }), ys = c.abs.map(function (q) { return q[1]; });
@@ -1738,7 +1833,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       if (hover && !c.found) {
         c.found = true; c.t0 = now; foundN++;
         huntDots[foundN - 1].classList.add("got");
-        huntEl.textContent = foundN === 3 ? "All three found. Now you have to say hi." : "Found " + foundN + " of 3: " + c.name + ".";
+        huntEl.textContent = foundN === 4 ? "All four found. Now you have to say hi." : "Found " + foundN + " of 4: " + c.name + ".";
       }
       var target = hover ? 1 : (c.found ? 0.4 : 0);
       c.v = reduce ? target : c.v + (target - c.v) * 0.1;
