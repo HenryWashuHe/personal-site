@@ -902,10 +902,10 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
               <span class="plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="r-bd" role="region" aria-labelledby="b-bd"><div><div class="pad">
-              <p class="lede">I spent the summer in Shanghai writing Kotlin in ByteDance's shared Android codebase. Both of my features were for the friend side of the product: one shipped to users, one still in integration when I left. Both were experiment-gated, so a lot of the work was making sure every group of users saw exactly what it was supposed to.</p>
+              <p class="lede">I spent the summer in Shanghai writing Kotlin in ByteDance's shared Android codebase. Both of my features were for the friend side of the product: one passed its A/B test and is now live in the app, one still in integration when I left. Both were experiment-gated, so a lot of the work was making sure every group of users saw exactly what it was supposed to.</p>
 
               <div class="feat">
-                <div class="feat-head"><h4>A messaging bar in the friend feed</h4><span class="tag done">shipped</span></div>
+                <div class="feat-head"><h4>A messaging bar in the friend feed</h4><span class="tag done">live after A/B test</span></div>
                 <p>The goal was to replace the bottom action area of the friend feed's video page with a messaging bar, so you could reply, tap a suggested emoji or start a voice message without leaving the video. I owned most of the Android client.</p>
                 <ul class="points">
                   <li><b>Four explicit states.</b> Server signals on each video map to one client decision: keep the default bar, show the new bar with voice, show it without voice, or leave the area empty on purpose. Separate booleans would have let "can't show messaging" quietly turn into "show nothing."</li>
@@ -1602,7 +1602,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       seen: [["COMET", "comet"], ["Squeeze", "squeeze"], ["genesis", "genesis"], ["UrAgent", "uragent"]] },
     { name: "Android",
       body: [
-        "At ByteDance I built a messaging bar for a short-video friend feed and owned most of the Android client: an explicit state model for experiment signals, integration with the messaging stack through its exported interfaces, lifecycle-safe handling of reused views, and a cohort fix with a remote rollback switch. It shipped through A/B experiments and staged rollout.",
+        "At ByteDance I built a messaging bar for a short-video friend feed and owned most of the Android client: an explicit state model for experiment signals, integration with the messaging stack through its exported interfaces, lifecycle-safe handling of reused views, and a cohort fix with a remote rollback switch. It went through A/B testing and staged rollout, and it's now live in the app.",
         "I also built a redesigned home-screen widget install guide with Lottie, isolated to one app behind a small interface, and simplified my own first draft by deleting a 220-line custom view."
       ],
       points: [
