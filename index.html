@@ -504,6 +504,8 @@ h4 { font-family: var(--body); font-weight: 650; font-size: 1rem; margin: 0 0 6p
 .stack dd { margin: 0; display: flex; flex-wrap: wrap; gap: 5px; }
 .stack dd span { padding: 2px 9px; border-radius: 999px; background: rgba(43, 24, 32, .08); font-weight: 500; }
 .card .stack { margin-top: auto; }
+.card-wide { grid-column: 1 / -1; }
+.card-wide > p:not(.sub) { max-width: 46em; }
 .cpp-head .stack { margin-top: 4px; }
 @media (max-width: 520px) { .stack > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
 
@@ -876,6 +878,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
         <div class="tb-row"><span class="tb-label">Backend and data</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">FastAPI</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">Flask</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;], [&quot;Squeeze&quot;, &quot;squeeze&quot;]]">PostgreSQL</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">Query tuning</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Helios&quot;, &quot;b-hel&quot;]]">scikit-learn</button></div></div>
         <div class="tb-row"><span class="tb-label">Cloud and clusters</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">GCP</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">A100 GPUs</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;], [&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">Slurm</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">AWS Bedrock</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;C++ labs&quot;, &quot;cpp&quot;], [&quot;CRIS Lab&quot;, &quot;b-cris&quot;]]">Linux</button></div></div>
         <div class="tb-row"><span class="tb-label">Agents</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">LangGraph</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;Squeeze&quot;, &quot;squeeze&quot;]]">Tool calling</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;COMET&quot;, &quot;comet&quot;]]">AppWorld</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;UrAgent&quot;, &quot;uragent&quot;]]">Multi-turn RL</button></div></div>
+        <div class="tb-row"><span class="tb-label">AR and vision</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;NASA SUITS&quot;, &quot;suits&quot;]]">Unity</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;NASA SUITS&quot;, &quot;suits&quot;]]">C#</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;NASA SUITS&quot;, &quot;suits&quot;]]">Magic Leap 2</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;NASA SUITS&quot;, &quot;suits&quot;]]">DINOv3</button></div></div>
         <div class="tb-row"><span class="tb-label">Android</span><div class="tb-chips"><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Android SDK</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Experiments</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Remote config</button><button type="button" class="tb-chip" aria-pressed="false" data-used="[[&quot;ByteDance&quot;, &quot;b-bd&quot;]]">Lottie</button></div></div>
       </div>
     </div>
@@ -1244,6 +1247,14 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <div class="more-wrap">
         <h3 class="h2-sm">More things I've built</h3>
         <div class="more">
+          <article class="card card-wide" id="suits">
+            <div class="card-head"><h4>NASA SUITS: AR for moonwalks</h4><span class="award">Presented at NASA JSC</span></div>
+            <p class="sub">Columbia Space Initiative, sub-team co-lead, spring 2026</p>
+            <dl class="stack stack-top"><div><dt>AR</dt><dd><span>Unity</span><span>C#</span><span>Magic Leap 2</span><span>OpenXR</span></dd></div><div><dt>Vision</dt><dd><span>DINOv3</span><span>damage detection</span><span>headset video</span></dd></div><div><dt>Team</dt><dd><span>sub-team co-lead</span><span>branch-per-team Git workflow</span></dd></div></dl>
+            <p>SUITS (Spacesuit User Interface Technologies for Students) is a NASA challenge where student teams design and build augmented-reality displays that guide Artemis astronauts on moonwalks. Our team built ours in Unity and C# on the Magic Leap 2.</p>
+            <p>I co-led the sub-team working on the lunar terrain vehicle. We built a DINOv3-based vision model that spots external damage on the rover from the headset's video, so the astronaut sees problems flagged in the display instead of inspecting by eye. We were one of 10 university teams invited to present at NASA's Johnson Space Center in May 2026.</p>
+            <p class="sub"><a href="https://github.com/columbiaspace/SUITS-MagicLeap-26" target="_blank" rel="noopener" data-umami-event="suits-repo-open">See the code on GitHub</a></p>
+          </article>
           <article class="card" id="squeeze">
             <div class="card-head"><h4>Squeeze</h4><span class="award">2nd place</span></div>
             <p class="sub">Morgan Stanley Code to Give, March 2026</p>
@@ -1385,7 +1396,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             <div class="hob hob-gym"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M9 14h10"/><rect x="5" y="8.5" width="4" height="11" rx="1.2"/><rect x="19" y="8.5" width="4" height="11" rx="1.2"/><path d="M3 12v4M25 12v4"/></svg><div><h3>Gym</h3><p>In the gym most weeks.</p></div></div>
             <div class="hob hob-food"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h20a10 9 0 0 1-20 0z"/><path d="M15 12 23 4M18 12l7-6"/></svg><div><h3>Food</h3><p>Big foodie, and New York is a good city for it.</p></div></div>
             <div class="hob hob-travel"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10.5"/><ellipse cx="14" cy="14" rx="4.5" ry="10.5"/><path d="M3.5 14h21"/></svg><div><h3>Travel</h3><p>I travel whenever I get the chance.</p></div></div>
-            <div class="hob hob-space"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="6"/><ellipse cx="14" cy="14" rx="12" ry="4" transform="rotate(-20 14 14)"/></svg><div><h3>Space</h3><p>Subteam lead at Columbia Space Initiative on an AR project for NASA's Lunar Terrain Vehicle, one of 10 university teams invited to present at Johnson Space Center.</p></div></div>
+            <div class="hob hob-space"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="6"/><ellipse cx="14" cy="14" rx="12" ry="4" transform="rotate(-20 14 14)"/></svg><div><h3>Space</h3><p>Sub-team co-lead on Columbia Space Initiative's NASA SUITS team, building AR for moonwalks. Cosmology is the side interest.</p></div></div>
           </div>
         </div>
         <p class="also">Also: competitive programming to keep my algorithms sharp, and vice president of Hack WashU.</p>
@@ -2158,7 +2169,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       ["ByteDance", "Work", { go: "b-bd" }], ["Trizen AI", "Work", { go: "b-tz" }], ["Helios Healthcare", "Work", { go: "b-hel" }],
       ["Research", "Section", { go: "research" }], ["EleutherAI", "Research", { go: "b-eleuther" }], ["CRIS Lab", "Research", { go: "b-cris" }],
       ["COMET", "Project", { go: "comet" }], ["Paxos and sharded KV store", "Project", { go: "paxos" }], ["C++ labs", "Project", { go: "cpp" }],
-      ["Squeeze", "Project", { go: "squeeze" }], ["genesis", "Project", { go: "genesis" }], ["AuscultAI", "Project", { go: "auscultai" }], ["UrAgent", "Project", { go: "uragent" }],
+      ["NASA SUITS", "Project", { go: "suits" }], ["Squeeze", "Project", { go: "squeeze" }], ["genesis", "Project", { go: "genesis" }], ["AuscultAI", "Project", { go: "auscultai" }], ["UrAgent", "Project", { go: "uragent" }],
       ["Off the clock", "Section", { go: "life" }], ["Contact", "Section", { go: "contact" }], ["Back to top", "Section", { go: "top" }],
       ["Resume (PDF)", "Link", { href: "Henry_He_Resume.pdf" }], ["GitHub", "Link", { href: "https://github.com/HenryWashuHe" }], ["LinkedIn", "Link", { href: "https://linkedin.com/in/henry-he-40a44531b" }]
     ];
