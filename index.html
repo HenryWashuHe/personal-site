@@ -617,6 +617,67 @@ kbd { font-family: var(--body); font-size: .74rem; font-weight: 650; padding: 2p
 @media (hover: none), (pointer: coarse) { .glow { display: none; } }
 @media (prefers-reduced-motion: reduce) { .bird { display: none; } .glow { display: none; } }
 
+/* ---------- hero links + layout pass ---------- */
+.hero { gap: 24px; }
+.hero-links { display: flex; flex-wrap: wrap; gap: 10px; animation: fade 1s .65s var(--ease-out) both; }
+.hlink {
+  display: inline-flex; align-items: center; gap: 9px; border: 0; cursor: pointer; text-decoration: none;
+  padding: 10px 16px; border-radius: 999px; font: inherit; font-size: .95rem; font-weight: 600; color: var(--ink);
+  background: rgba(255, 255, 255, .5); box-shadow: inset 0 0 0 1.5px rgba(43, 24, 32, .18);
+  transition: transform .35s var(--ease-spring), background .25s, box-shadow .25s;
+}
+.hlink:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .8); box-shadow: inset 0 0 0 1.5px rgba(43, 24, 32, .35), 0 10px 24px -14px rgba(90, 30, 50, .5); }
+.hlink svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.hlink-mail { background: var(--ink); color: var(--sky-1); box-shadow: none; }
+.hlink-mail:hover { background: #3d2430; box-shadow: 0 10px 24px -12px rgba(43, 24, 32, .6); }
+.hlink-mail .mail-addr { font-size: inherit; font-family: var(--body); user-select: all; }
+.hlink-act { font-size: .76rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: rgba(250, 223, 180, .2); }
+.avail { display: flex; align-items: center; gap: 10px; font-size: var(--t-sm); font-weight: 600; animation: fade 1s .75s var(--ease-out) both; }
+.avail-dot { width: 9px; height: 9px; border-radius: 50%; background: #3f9d63; box-shadow: 0 0 0 0 rgba(63, 157, 99, .5); animation: pulseG 2.4s infinite; }
+@keyframes pulseG { 70% { box-shadow: 0 0 0 9px rgba(63, 157, 99, 0); } 100% { box-shadow: 0 0 0 0 rgba(63, 157, 99, 0); } }
+.hero { padding-block: calc(env(safe-area-inset-top, 0px) + 130px) 40px; }
+
+.dive-toggle {
+  display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; border: 0; cursor: pointer;
+  padding: 12px 20px; border-radius: 999px; font: inherit; font-weight: 650; font-size: .95rem; color: var(--ink);
+  background: rgba(255, 246, 236, .55); box-shadow: inset 0 0 0 1.5px rgba(43, 24, 32, .2); transition: background .25s, transform .35s var(--ease-spring);
+}
+.dive-toggle:hover { background: rgba(255, 246, 236, .85); transform: translateY(-2px); }
+.dive-toggle .dt-close { display: none; }
+.dive-toggle[aria-expanded="true"] .dt-open { display: none; }
+.dive-toggle[aria-expanded="true"] .dt-close { display: inline; }
+.dive-toggle[aria-expanded="true"] .plus::after { transform: rotate(0deg); }
+.collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s var(--ease-out); margin-top: -24px; }
+.collapse.open { grid-template-rows: 1fr; margin-top: 0; }
+.collapse > div { overflow: hidden; }
+.collapse .dive { margin-top: 4px; }
+
+.lab { padding: 0; }
+.lab dt { display: block; }
+.lab-btn { width: 100%; display: grid; grid-template-columns: minmax(0, 15em) minmax(0, 1fr) 22px; gap: 4px 28px; align-items: baseline; text-align: left; border: 0; background: none; cursor: pointer; padding: 18px 0; font: inherit; color: inherit; }
+.lab-btn b { font-family: var(--display); font-weight: 400; font-size: var(--t-lg); line-height: 1.1; transition: transform .35s var(--ease-out); }
+.lab-btn:hover b { transform: translateX(6px); }
+.lab-btn span:not(.plus) { color: var(--muted); font-size: .95rem; }
+.lab-btn .plus { align-self: center; justify-self: end; }
+.lab.open .lab-btn .plus::after { transform: rotate(0deg); }
+.lab { display: block; }
+.lab dd { margin: 0; display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease-out); max-width: none; }
+.lab.open dd { grid-template-rows: 1fr; }
+.lab dd > div { overflow: hidden; display: flex; flex-direction: column; gap: 10px; padding-left: calc(15em + 28px); max-width: calc(44em + 15em + 28px); }
+.lab.open dd > div { padding-bottom: 22px; }
+@media (max-width: 860px) {
+  .lab-btn { grid-template-columns: minmax(0, 1fr) 22px; }
+  .lab-btn span:not(.plus) { grid-column: 1; }
+  .lab-btn .plus { grid-column: 2; grid-row: 1 / 3; }
+  .lab dd > div { padding-left: 0; }
+  .hero { padding-block: calc(env(safe-area-inset-top, 0px) + 100px) 32px; }
+}
+@media (max-width: 600px) { .pill nav a[href="#research"] { display: none; } }
+@media (max-width: 520px) {
+  .hlink { padding: 9px 14px; font-size: .9rem; }
+  .hlink-mail { width: 100%; justify-content: center; }
+}
+
 /* ---------- projects ---------- */
 .projects { padding-block: 40px 100px; display: flex; flex-direction: column; gap: 44px; }
 .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: start; max-width: 1040px; }
@@ -764,6 +825,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <nav aria-label="Sections">
         <a href="#work">Work</a>
         <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
         <a href="#life">Life</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -778,8 +840,13 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     <div class="in hero">
       <h1 class="name" id="name" aria-label="Henry He"></h1>
       <p class="lead">I study computer science at Columbia and work on two sides of language models: making them cheaper to run, and figuring out what is going on inside them. When I'm not doing that I'm usually reading fiction or looking at space.</p>
+      <div class="hero-links">
+        <button class="hlink hlink-mail" type="button" id="hero-mail"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2"/><path d="m3.5 6 6.5 5 6.5-5"/></svg><span class="mail-addr" id="hero-mail-addr">hhernye@gmail.com</span><span class="hlink-act">Copy</span></button>
+        <a class="hlink" href="https://github.com/HenryWashuHe" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>GitHub</a>
+        <a class="hlink" href="https://linkedin.com/in/henry-he-40a44531b" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c.8-3 3.2-4.5 6-4.5s5.2 1.5 6 4.5"/></svg>LinkedIn</a>
+      </div>
+      <p class="avail"><span class="avail-dot" aria-hidden="true"></span>Open to Summer 2027 infrastructure SWE internships, May 14 to September 7</p>
       <p class="clock"><i aria-hidden="true"></i><span id="clock">It's afternoon in New York.</span></p>
-      <a class="cue" id="cue" href="#toolbox"><span class="cue-sun" aria-hidden="true"></span>Scroll to watch the sun set</a>
     </div>
     <div class="in lately">
       <h2 class="h2-sm">Lately</h2>
@@ -825,8 +892,8 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       <div class="group">
         <div class="group-head"><h2 class="h2">Work</h2><p>Three internships, two continents. Tap a row to open it.</p></div>
         <ul class="rows">
-          <li class="row open">
-            <button class="row-btn" type="button" aria-expanded="true" aria-controls="r-bd" id="b-bd">
+          <li class="row">
+            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-bd" id="b-bd">
               <span class="row-org">ByteDance</span>
               <span class="row-role">AI Full-Stack Engineer Intern, Douyin Social &amp; Messaging</span>
               <span class="row-tech">Kotlin, Android, experiments, remote rollback</span>
@@ -955,72 +1022,6 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           </li>
         </ul>
       </div>
-
-      <div class="group">
-        <div class="group-head"><h2 class="h2">Research</h2><p>Interpretability, mostly</p></div>
-        <ul class="rows">
-          <li class="row">
-            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-eleuther" id="b-eleuther">
-              <span class="row-org">EleutherAI</span>
-              <span class="row-role">Research Fellow, Summer of Open AI Research</span>
-              <span class="row-tech">PyTorch, Inspect AI, linear probes</span>
-              <span class="row-when">Jul–Aug 2026</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="row-body" id="r-eleuther" role="region" aria-labelledby="b-eleuther"><div><div class="pad">
-              <p class="lede">Models sometimes get drug-toxicity questions right for the wrong reasons. I wanted to know whether a model actually represents the chemistry, or is matching surface cues that happen to line up with the answer.</p>
-              <div class="facets">
-                <div>
-                  <h4>What I did</h4>
-                  <p>Extracted residual-stream activations on drug-toxicity benchmarks and trained linear probes on them to see how scientific concepts are laid out inside the model. Then I tried to break the probes, varying prompts and contexts and building adversarial examples meant to pull the real concept apart from the cues.</p>
-                </div>
-                <div>
-                  <h4>Why it matters</h4>
-                  <p>A probe with high accuracy isn't evidence of understanding if it's tracking a spurious feature. Measuring probe sensitivity and concept separability under pressure is how you tell the two apart.</p>
-                </div>
-              </div>
-              <div class="chips"><span class="chip">Remote</span><span class="chip">PyTorch</span><span class="chip">Inspect AI</span><span class="chip">residual stream</span><span class="chip">linear probes</span></div>
-            </div></div></div>
-          </li>
-          <li class="row">
-            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-cris" id="b-cris">
-              <span class="row-org">CRIS Lab</span>
-              <span class="row-role">AI Research Engineer, Columbia</span>
-              <span class="row-tech">PyTorch, Gemma-3-27B, sparse autoencoders, Slurm</span>
-              <span class="row-when">Jan–May 2026</span>
-              <span class="plus" aria-hidden="true"></span>
-            </button>
-            <div class="row-body" id="r-cris" role="region" aria-labelledby="b-cris"><div><div class="pad">
-              <p class="lede">Does retrieval-augmented generation switch on reusable reasoning routines inside a model? I tested that with sparse autoencoder features on Gemma-3-27B at Columbia's Complex Resilient Intelligent Systems Lab.</p>
-              <div class="facets three">
-                <div>
-                  <h4>Setup</h4>
-                  <p>Gemma-3-27B with pretrained SAEs from SAE-Lens on a Slurm GPU cluster. I built the PyTorch and Hugging Face Transformers pipelines for inference and evaluation, and used torch.profiler to keep the GPU jobs efficient.</p>
-                </div>
-                <div>
-                  <h4>What happened</h4>
-                  <p>One candidate feature passed ablation and differential-activation tests: removing it changed behavior, and it activated differently with retrieval than without. It then failed a pre-registered steering-specificity test. Turning it up didn't specifically produce the behavior.</p>
-                </div>
-                <div>
-                  <h4>What I took from it</h4>
-                  <p>Necessary isn't the same as sufficient. Following Makelov et al., a feature can matter when it's removed without being what drives the behavior on its own. That gap is exactly why the steering test was pre-registered.</p>
-                </div>
-              </div>
-              <p>Earlier in the semester I used PCA, normalization and probing to compare how the model represents the same math problems posed in plain language and in symbols, with controlled accuracy benchmarks across both formats.</p>
-              <div class="chips"><span class="chip">New York</span><span class="chip">Gemma-3-27B</span><span class="chip">SAE-Lens</span><span class="chip">causal interventions</span><span class="chip">torch.profiler</span><span class="chip">Slurm</span></div>
-            </div></div></div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="group group-wide" id="coursework">
-        <div class="group-head"><h2 class="h2">Coursework</h2><p>Columbia CS, 3.96 GPA, after transferring from WashU</p></div>
-        <div class="courses">
-          <div class="c-col"><h3>Systems and infrastructure</h3><ul><li><button type="button" class="c-row c-link" data-go="paxos"><span class="c-name">Fundamentals of Large-Scale Distributed Systems</span><span class="c-meta">COMS W4113, Fall 2026</span><span class="tag soon">in progress</span><span class="c-see">See the work</span></button></li><li><button type="button" class="c-row c-link" data-go="comet"><span class="c-name">Scaling LLMs: Systems, Optimization and Emerging Paradigms</span><span class="c-meta">COMS E6998, graduate, Fall 2026</span><span class="tag soon">in progress</span><span class="c-see">See the work</span></button></li><li><button type="button" class="c-row c-link" data-go="cpp"><span class="c-name">C++ for C Programmers</span><span class="c-meta">COMS W4995, Spring 2026</span><span class="c-see">See the work</span></button></li><li><div class="c-row"><span class="c-name">Introduction to Databases</span><span class="c-meta">COMS W4111, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Fundamentals of Computer Systems</span><span class="c-meta">CSEE W3827, Fall 2025</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Advanced Programming</span><span class="c-meta">COMS W3157, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Data Structures and Algorithms</span><span class="c-meta">Washington University in St. Louis</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Computer Science Theory</span><span class="c-meta">COMS W3261, Fall 2026</span><span class="tag soon">in progress</span></div></li></ul></div>
-          <div class="c-col"><h3>Machine learning and AI</h3><ul><li><div class="c-row"><span class="c-name">Reinforcement Learning</span><span class="c-meta">EECS E6892, graduate, Spring 2026</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Natural Language Processing</span><span class="c-meta">COMS W4705, Spring 2026</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Machine Learning</span><span class="c-meta">COMS W4771, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Theory of ML and Interactive Decision Making</span><span class="c-meta">COMS W4995, Spring 2026</span></div></li><li><div class="c-row"><span class="c-name">Introduction to AI</span><span class="c-meta">Washington University in St. Louis</span><span class="grade">A+</span></div></li></ul></div>
-          <div class="c-col"><h3>Beyond CS</h3><ul><li><div class="c-row"><span class="c-name">Galaxies and Cosmology</span><span class="c-meta">ASTR UN1420, Spring 2026</span></div></li><li><div class="c-row"><span class="c-name">Literature Humanities I and II</span><span class="c-meta">HUMA CC1001–1002, 2025–26</span></div></li><li><div class="c-row"><span class="c-name">Contemporary Western Civilization</span><span class="c-meta">COCI CC1101–1102, 2026–27</span><span class="tag soon">in progress</span></div></li><li><div class="c-row"><span class="c-name">Music Humanities</span><span class="c-meta">HUMA UN1123, Fall 2026</span><span class="tag soon">in progress</span></div></li></ul></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1063,6 +1064,8 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             <div><dt>Evaluation</dt><dd><span>AppWorld agent benchmark</span><span>latency and throughput</span><span>peak GPU memory</span><span>bootstrap confidence intervals</span></dd></div>
           </dl></div>
 
+      <button class="dive-toggle" type="button" aria-expanded="false" aria-controls="comet-dive"><span class="plus" aria-hidden="true"></span><span class="dt-open">Open the full design: questions, setup, memory diagram, methods and schedule</span><span class="dt-close">Close the full design</span></button>
+      <div class="collapse" id="comet-dive"><div>
       <div class="dive">
         <div class="facets four">
           <div>
@@ -1148,6 +1151,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           </div>
         </div>
       </div>
+      </div></div>
 
       <div class="systems" id="systems">
         <div class="sys-head">
@@ -1209,43 +1213,28 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             </dl>
           </div>
           <dl class="labs">
-            <div class="lab">
-              <dt><b>mymake</b><span>A make clone that builds itself</span></dt>
-              <dd>
+            <div class="lab open"><dt><button class="lab-btn" type="button" aria-expanded="true"><b>mymake</b><span>A make clone that builds itself</span><span class="plus" aria-hidden="true"></span></button></dt><dd><div>
                 <p>Parses MyMakefiles with <code>std::regex</code> (variables, multi-target rules, <code>.PHONY</code>), generates implicit compile and link rules, builds dependencies recursively with cycle detection and timestamp checks through <code>std::filesystem</code>, and runs commands through <code>/bin/sh</code> behind a custom fatal and non-fatal exception hierarchy.</p>
                 <p>Parsed rules are cached to disk with a generic <code>Xdb&lt;T&gt;</code> serializer, and the cache invalidates itself when the MyMakefile changes or a source file appears or disappears. On a warm run the MyMakefile is never opened.</p>
                 <div class="chips"><span class="chip">dependency graphs</span><span class="chip">incremental builds</span><span class="chip">std::filesystem</span><span class="chip">templates</span><span class="chip">exceptions</span></div>
-              </dd>
-            </div>
-            <div class="lab">
-              <dt><b>LRU and LFU caches</b><span>O(1) eviction as generic templates</span></dt>
-              <dd>
+              </div></dd></div>
+            <div class="lab"><dt><button class="lab-btn" type="button" aria-expanded="false"><b>LRU and LFU caches</b><span>O(1) eviction as generic templates</span><span class="plus" aria-hidden="true"></span></button></dt><dd><div>
                 <p>An LRU cache from <code>std::list</code> plus <code>unordered_map</code> with <code>splice</code>, made fully generic. Then an LFU cache with one list per frequency and a tracked minimum, so every operation including eviction stays O(1), with no copies of values beyond insert and return.</p>
                 <p>Constrained the key type with a C++20 concept to turn pages of template errors into one readable line, and specialized <code>std::hash</code> so a custom string class could be a key.</p>
                 <div class="chips"><span class="chip">O(1) design</span><span class="chip">C++20 concepts</span><span class="chip">std::hash</span><span class="chip">STL</span></div>
-              </dd>
-            </div>
-            <div class="lab">
-              <dt><b>Mdb</b><span>A record database, refactored three ways</span></dt>
-              <dd>
+              </div></dd></div>
+            <div class="lab"><dt><button class="lab-btn" type="button" aria-expanded="false"><b>Mdb</b><span>A record database, refactored three ways</span><span class="plus" aria-hidden="true"></span></button></dt><dd><div>
                 <p>Wrapped a C record database in classes, then split it into reader and writer bases with multiple inheritance so read-only files work. Added an <code>mdb-grep</code> tool with <code>std::regex</code>, move constructors so one writer can fan out to several databases, and finally swapped all C stdio for C++ streams under the Rule of Zero.</p>
                 <div class="chips"><span class="chip">inheritance</span><span class="chip">move semantics</span><span class="chip">fstreams</span><span class="chip">Rule of Zero</span></div>
-              </dd>
-            </div>
-            <div class="lab">
-              <dt><b>MyString</b><span>Every copy the compiler makes</span></dt>
-              <dd>
+              </div></dd></div>
+            <div class="lab"><dt><button class="lab-btn" type="button" aria-expanded="false"><b>MyString</b><span>Every copy the compiler makes</span><span class="plus" aria-hidden="true"></span></button></dt><dd><div>
                 <p>Traced each constructor, copy, assignment and destructor call through a string class, with and without copy elision. Then added comparison operators, <code>+=</code>, and <code>noexcept</code> move construction and assignment, and worked out which copies became moves and why the others couldn't.</p>
                 <div class="chips"><span class="chip">RAII</span><span class="chip">copy elision</span><span class="chip">noexcept moves</span><span class="chip">valgrind</span></div>
-              </dd>
-            </div>
-            <div class="lab">
-              <dt><b>Cruncher</b><span>An expression evaluator</span></dt>
-              <dd>
+              </div></dd></div>
+            <div class="lab"><dt><button class="lab-btn" type="button" aria-expanded="false"><b>Cruncher</b><span>An expression evaluator</span><span class="plus" aria-hidden="true"></span></button></dt><dd><div>
                 <p>Dijkstra's two-stack algorithm for <code>+ - * / **</code> with parentheses and precedence. Making <code>**</code> right-associative like Python came down to one small change in when operators get popped.</p>
                 <div class="chips"><span class="chip">stacks</span><span class="chip">parsing</span><span class="chip">Makefiles</span></div>
-              </dd>
-            </div>
+              </div></dd></div>
           </dl>
         </div>
       </div>
@@ -1291,6 +1280,72 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           </article>
         </div>
         <p class="sub">More on <a href="https://github.com/HenryWashuHe">GitHub</a>.</p>
+      </div>
+
+      <div class="group" id="research">
+        <div class="group-head"><h2 class="h2">Research</h2><p>Interpretability, mostly</p></div>
+        <ul class="rows">
+          <li class="row">
+            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-eleuther" id="b-eleuther">
+              <span class="row-org">EleutherAI</span>
+              <span class="row-role">Research Fellow, Summer of Open AI Research</span>
+              <span class="row-tech">PyTorch, Inspect AI, linear probes</span>
+              <span class="row-when">Jul–Aug 2026</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="row-body" id="r-eleuther" role="region" aria-labelledby="b-eleuther"><div><div class="pad">
+              <p class="lede">Models sometimes get drug-toxicity questions right for the wrong reasons. I wanted to know whether a model actually represents the chemistry, or is matching surface cues that happen to line up with the answer.</p>
+              <div class="facets">
+                <div>
+                  <h4>What I did</h4>
+                  <p>Extracted residual-stream activations on drug-toxicity benchmarks and trained linear probes on them to see how scientific concepts are laid out inside the model. Then I tried to break the probes, varying prompts and contexts and building adversarial examples meant to pull the real concept apart from the cues.</p>
+                </div>
+                <div>
+                  <h4>Why it matters</h4>
+                  <p>A probe with high accuracy isn't evidence of understanding if it's tracking a spurious feature. Measuring probe sensitivity and concept separability under pressure is how you tell the two apart.</p>
+                </div>
+              </div>
+              <div class="chips"><span class="chip">Remote</span><span class="chip">PyTorch</span><span class="chip">Inspect AI</span><span class="chip">residual stream</span><span class="chip">linear probes</span></div>
+            </div></div></div>
+          </li>
+          <li class="row">
+            <button class="row-btn" type="button" aria-expanded="false" aria-controls="r-cris" id="b-cris">
+              <span class="row-org">CRIS Lab</span>
+              <span class="row-role">AI Research Engineer, Columbia</span>
+              <span class="row-tech">PyTorch, Gemma-3-27B, sparse autoencoders, Slurm</span>
+              <span class="row-when">Jan–May 2026</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="row-body" id="r-cris" role="region" aria-labelledby="b-cris"><div><div class="pad">
+              <p class="lede">Does retrieval-augmented generation switch on reusable reasoning routines inside a model? I tested that with sparse autoencoder features on Gemma-3-27B at Columbia's Complex Resilient Intelligent Systems Lab.</p>
+              <div class="facets three">
+                <div>
+                  <h4>Setup</h4>
+                  <p>Gemma-3-27B with pretrained SAEs from SAE-Lens on a Slurm GPU cluster. I built the PyTorch and Hugging Face Transformers pipelines for inference and evaluation, and used torch.profiler to keep the GPU jobs efficient.</p>
+                </div>
+                <div>
+                  <h4>What happened</h4>
+                  <p>One candidate feature passed ablation and differential-activation tests: removing it changed behavior, and it activated differently with retrieval than without. It then failed a pre-registered steering-specificity test. Turning it up didn't specifically produce the behavior.</p>
+                </div>
+                <div>
+                  <h4>What I took from it</h4>
+                  <p>Necessary isn't the same as sufficient. Following Makelov et al., a feature can matter when it's removed without being what drives the behavior on its own. That gap is exactly why the steering test was pre-registered.</p>
+                </div>
+              </div>
+              <p>Earlier in the semester I used PCA, normalization and probing to compare how the model represents the same math problems posed in plain language and in symbols, with controlled accuracy benchmarks across both formats.</p>
+              <div class="chips"><span class="chip">New York</span><span class="chip">Gemma-3-27B</span><span class="chip">SAE-Lens</span><span class="chip">causal interventions</span><span class="chip">torch.profiler</span><span class="chip">Slurm</span></div>
+            </div></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="group group-wide" id="coursework">
+        <div class="group-head"><h2 class="h2">Coursework</h2><p>Columbia CS, 3.96 GPA, after transferring from WashU</p></div>
+        <div class="courses">
+          <div class="c-col"><h3>Systems and infrastructure</h3><ul><li><button type="button" class="c-row c-link" data-go="paxos"><span class="c-name">Fundamentals of Large-Scale Distributed Systems</span><span class="c-meta">COMS W4113, Fall 2026</span><span class="tag soon">in progress</span><span class="c-see">See the work</span></button></li><li><button type="button" class="c-row c-link" data-go="comet"><span class="c-name">Scaling LLMs: Systems, Optimization and Emerging Paradigms</span><span class="c-meta">COMS E6998, graduate, Fall 2026</span><span class="tag soon">in progress</span><span class="c-see">See the work</span></button></li><li><button type="button" class="c-row c-link" data-go="cpp"><span class="c-name">C++ for C Programmers</span><span class="c-meta">COMS W4995, Spring 2026</span><span class="c-see">See the work</span></button></li><li><div class="c-row"><span class="c-name">Introduction to Databases</span><span class="c-meta">COMS W4111, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Fundamentals of Computer Systems</span><span class="c-meta">CSEE W3827, Fall 2025</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Advanced Programming</span><span class="c-meta">COMS W3157, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Data Structures and Algorithms</span><span class="c-meta">Washington University in St. Louis</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Computer Science Theory</span><span class="c-meta">COMS W3261, Fall 2026</span><span class="tag soon">in progress</span></div></li></ul></div>
+          <div class="c-col"><h3>Machine learning and AI</h3><ul><li><div class="c-row"><span class="c-name">Reinforcement Learning</span><span class="c-meta">EECS E6892, graduate, Spring 2026</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Natural Language Processing</span><span class="c-meta">COMS W4705, Spring 2026</span><span class="grade">A+</span></div></li><li><div class="c-row"><span class="c-name">Machine Learning</span><span class="c-meta">COMS W4771, Fall 2025</span></div></li><li><div class="c-row"><span class="c-name">Theory of ML and Interactive Decision Making</span><span class="c-meta">COMS W4995, Spring 2026</span></div></li><li><div class="c-row"><span class="c-name">Introduction to AI</span><span class="c-meta">Washington University in St. Louis</span><span class="grade">A+</span></div></li></ul></div>
+          <div class="c-col"><h3>Beyond CS</h3><ul><li><div class="c-row"><span class="c-name">Galaxies and Cosmology</span><span class="c-meta">ASTR UN1420, Spring 2026</span></div></li><li><div class="c-row"><span class="c-name">Literature Humanities I and II</span><span class="c-meta">HUMA CC1001–1002, 2025–26</span></div></li><li><div class="c-row"><span class="c-name">Contemporary Western Civilization</span><span class="c-meta">COCI CC1101–1102, 2026–27</span><span class="tag soon">in progress</span></div></li><li><div class="c-row"><span class="c-name">Music Humanities</span><span class="c-meta">HUMA UN1123, Fall 2026</span><span class="tag soon">in progress</span></div></li></ul></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1416,7 +1471,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       var t = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit" }).format(now).toLowerCase();
       var h = parseInt(new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", hour: "numeric", hourCycle: "h23" }).format(now), 10);
       var part = h < 5 ? "the middle of the night" : h < 12 ? "morning" : h < 17 ? "afternoon" : h < 21 ? "evening" : "night";
-      clockEl.textContent = "It's " + t + " in New York right now, so " + part + " for me.";
+      clockEl.textContent = "It's " + t + " in New York right now, so " + part + " for me. Scroll down and the sun sets.";
     } catch (e) {}
   }
   tick(); setInterval(tick, 30000);
@@ -1790,6 +1845,21 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     b.addEventListener("click", function () { copyEmail(b.parentNode.querySelector(".mail-addr")); });
   });
 
+  document.getElementById("hero-mail").addEventListener("click", function () { copyEmail(document.getElementById("hero-mail-addr")); });
+
+  /* ---- disclosure toggles ---- */
+  var diveBtn = document.querySelector(".dive-toggle"), diveBox = document.getElementById("comet-dive");
+  diveBtn.addEventListener("click", function () {
+    var open = !diveBox.classList.contains("open");
+    diveBox.classList.toggle("open", open); diveBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  document.querySelectorAll(".lab-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var lab = b.closest(".lab"), open = !lab.classList.contains("open");
+      lab.classList.toggle("open", open); b.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+
   /* ---- TL;DR sheet ---- */
   var sheet = document.getElementById("tldr"), opener = document.getElementById("tldr-open");
   function openSheet() {
@@ -1994,7 +2064,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   /* sky clock in the nav */
-  var skyEl = document.getElementById("sky-time"), skyB = skyEl.querySelector("b"), cue = document.getElementById("cue");
+  var skyEl = document.getElementById("sky-time"), skyB = skyEl.querySelector("b");
   function skyTime(y, setAt, vh) {
     if (!skyB) return;
     var maxY = Math.max(1, document.documentElement.scrollHeight - vh);
@@ -2003,7 +2073,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     var h = Math.floor(t), m = Math.floor((t - h) * 60), hh = h > 12 ? h - 12 : h;
     skyB.textContent = hh + ":" + (m < 10 ? "0" : "") + m + " pm";
     skyEl.classList.toggle("night", t >= 19.5);
-    cue.classList.toggle("gone", y > 60);
+    
   }
   onScroll();
 
@@ -2079,7 +2149,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       ["The 30-second version", "Action", { act: "tldr" }], ["Copy email", "Action", { act: "copy" }], ["Watch the sun set", "Action", { act: "sunset" }],
       ["What I work on", "Section", { go: "work" }], ["Toolbox", "Section", { go: "toolbox" }], ["Coursework", "Section", { go: "coursework" }],
       ["ByteDance", "Work", { go: "b-bd" }], ["Trizen AI", "Work", { go: "b-tz" }], ["Helios Healthcare", "Work", { go: "b-hel" }],
-      ["EleutherAI", "Research", { go: "b-eleuther" }], ["CRIS Lab", "Research", { go: "b-cris" }],
+      ["Research", "Section", { go: "research" }], ["EleutherAI", "Research", { go: "b-eleuther" }], ["CRIS Lab", "Research", { go: "b-cris" }],
       ["COMET", "Project", { go: "comet" }], ["Paxos and sharded KV store", "Project", { go: "paxos" }], ["C++ labs", "Project", { go: "cpp" }],
       ["Squeeze", "Project", { go: "squeeze" }], ["genesis", "Project", { go: "genesis" }], ["AuscultAI", "Project", { go: "auscultai" }], ["UrAgent", "Project", { go: "uragent" }],
       ["Off the clock", "Section", { go: "life" }], ["Contact", "Section", { go: "contact" }], ["Back to top", "Section", { go: "top" }],
