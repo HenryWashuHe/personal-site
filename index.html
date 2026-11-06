@@ -508,6 +508,8 @@ h4 { font-family: var(--body); font-weight: 650; font-size: 1rem; margin: 0 0 6p
 .card .stack { margin-top: auto; }
 .card .stack-top { margin-top: 0; }
 .card-wide { grid-column: 1 / -1; }
+.deep { display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, .35); font-size: .94rem; }
+.deep b { font-weight: 650; }
 .card-wide > p:not(.sub) { max-width: 46em; }
 .cpp-head .stack { margin-top: 4px; }
 @media (max-width: 520px) { .stack > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
@@ -1286,18 +1288,26 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
           </article>
           <article class="card" id="scds">
             <div class="card-head"><h4>SCDS</h4><span class="award">Winner</span></div>
-            <p class="sub">WashU Skandalaris AI Hackathon 2025</p>
+            <p class="sub">WashU Skandalaris AI Hackathon 2025, technical lead</p>
             <dl class="stack stack-top"><div><dt>Agents</dt><dd><span>LangGraph</span><span>GPT-4o-mini</span><span>Open-Meteo</span></dd></div><div><dt>Backend</dt><dd><span>FastAPI</span><span>Pydantic</span><span>SSE</span></dd></div><div><dt>Frontend</dt><dd><span>Next.js</span><span>TypeScript</span><span>Google Maps</span></dd></div><div><dt>Deploy</dt><dd><span>Vercel</span><span>Render</span></dd></div></dl>
             <p>A smart climate decision system. Pick any place on a map, and four agents (meteorologist, agronomist, economist and planner) turn 90 days of real weather data into a crop and water strategy scored against your economic, environmental and social priorities.</p>
-            <p>The numbers come from deterministic models and the LLM only explains them, so results are reproducible. Agents hand each other structured claims through a shared LangGraph state, and each one streams to the UI over Server-Sent Events.</p>
+            <p>As technical lead I designed the architecture and built the agent pipeline, the FastAPI backend and the streaming to the frontend. Teammates shaped the product and user experience and delivered the pitch.</p>
+            <div class="deep">
+              <p><b>Hardest part: keeping an LLM pipeline trustworthy.</b> When agents pass prose to each other, numbers drift and get invented. I made every agent emit typed claims (metric, value, unit, confidence) into a shared Pydantic state, computed every number in deterministic code, and let GPT-4o-mini only explain the results. That made the output reproducible and testable, with pytest coverage for each agent and the full pipeline.</p>
+              <p><b>What transfers.</b> Typed contracts between components, keeping model output separate from computed results, streaming responses over Server-Sent Events, and shipping a two-service app (Vercel and Render) behind a proxy.</p>
+            </div>
             <div><a class="hlink" href="https://github.com/HenryWashuHe/washuhackathon2025" target="_blank" rel="noopener" data-umami-event="scds-repo-open"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>Code on GitHub</a></div>
           </article>
           <article class="card" id="coach">
             <div class="card-head"><h4>AI Sports Coach</h4><span class="award">Winner</span></div>
-            <p class="sub">Google DevFest 25: Build with AI</p>
+            <p class="sub">Google DevFest 25: Build with AI, technical lead</p>
             <dl class="stack stack-top"><div><dt>AI</dt><dd><span>Gemini 1.5 Flash</span><span>Vertex AI</span><span>multimodal prompts</span></dd></div><div><dt>Backend</dt><dd><span>Python</span><span>Flask</span></dd></div><div><dt>Frontend</dt><dd><span>JavaScript</span><span>canvas frame capture</span></dd></div></dl>
             <p>Upload a workout photo or video and Gemini names the exercise and critiques your form: what you did right, what to fix, and how to improve. For video, the browser grabs a frame and sends it to a Flask backend.</p>
-            <p>It also builds a personalized nutrition and workout plan from your stats and goal, and suggests trainers that match.</p>
+            <p>It also builds a personalized nutrition and workout plan and suggests matching trainers. As technical lead I owned the architecture, the Flask backend and the Gemini integration. Teammates shaped the product and user experience and delivered the pitch.</p>
+            <div class="deep">
+              <p><b>Hardest part: reliable structure from a multimodal model.</b> Gemini returns free text, but the UI needs fields: the exercise name, three feedback sections, and a plan split into nutrition and workout. I defined an output contract in the prompts, parsed it with fallbacks for when the model drifts, and turned safety blocks and cut-off generations into clear errors. Video never uploads: the browser seeks to a frame, draws it to a canvas and sends a single JPEG.</p>
+              <p><b>What transfers.</b> Getting structured output from LLMs, defensive parsing, keeping heavy media on the client to cut payload and latency, and service-account auth to Vertex AI on Google Cloud.</p>
+            </div>
             <div><a class="hlink" href="https://github.com/HenryWashuHe/Best-AI-For-Gym" target="_blank" rel="noopener" data-umami-event="coach-repo-open"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>Code on GitHub</a></div>
           </article>
           <article class="card" id="genesis">
