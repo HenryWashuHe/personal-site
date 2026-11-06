@@ -696,6 +696,28 @@ kbd { font-family: var(--body); font-size: .74rem; font-weight: 650; padding: 2p
 .win-icon { grid-row: 1 / 3; width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 50% 38%, #fff6dc, #ffc271 55%, #e8893f); box-shadow: 0 0 14px rgba(255, 194, 113, .7), inset 0 0 0 1.5px rgba(168, 90, 30, .35); }
 @media (max-width: 860px) { .wins { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- project cards: summary + write-up sheet ---------- */
+.more { grid-auto-rows: 1fr; }
+.card.sum { cursor: pointer; gap: 12px; }
+.card.sum:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.card-pitch { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.card-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.card-chips span { padding: 2px 9px; border-radius: 999px; font-size: .8rem; font-weight: 600; background: rgba(255, 255, 255, .55); box-shadow: inset 0 0 0 1px rgba(43, 24, 32, .16); }
+.card-foot { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.card-more { border: 0; cursor: pointer; font: inherit; font-size: .9rem; font-weight: 650; padding: 9px 16px; border-radius: 999px; background: var(--ink); color: var(--sky-2); transition: transform .3s var(--ease-spring); }
+.card.sum:hover .card-more { transform: translateX(3px); }
+.card-code { font-size: .88rem; font-weight: 600; }
+.card-wide.sum .card-pitch { -webkit-line-clamp: 2; max-width: 52em; }
+.psheet .sheet-in { gap: 16px; }
+.psheet .sheet-body { display: flex; flex-direction: column; gap: 14px; font-size: .97rem; }
+.psheet .sheet-body p.sub { color: #6a4146; }
+.psheet .stack { border-top: 0; padding-top: 0; }
+.psheet .stack dd span { background: rgba(43, 24, 32, .06); }
+.psheet .deep { background: rgba(43, 24, 32, .05); }
+.psheet .award { color: var(--sky-3); }
+@media (min-width: 900px) { .psheet { width: min(620px, calc(100vw - 24px)); } }
+@media (max-width: 860px) { .more { grid-auto-rows: auto; } }
+
 /* ---------- projects ---------- */
 .projects { padding-block: 40px 100px; display: flex; flex-direction: column; gap: 44px; }
 .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: start; max-width: 1040px; }
@@ -1285,6 +1307,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
               <div><dt>AI</dt><dd><span>LangGraph</span><span>AWS Bedrock</span><span>structured tool calls</span><span>guardrails</span><span>human approval</span></dd></div>
             </dl>
             <p>A full-stack volunteer platform built for a nonprofit during a hackathon. I owned the FastAPI and PostgreSQL backend and the agent integration: LangGraph agents on AWS Bedrock that draft campaign content and outreach through structured tool calls, with guardrails and a human approval step before anything goes out.</p>
+            <div><a class="hlink" href="https://github.com/HenryWashuHe/Morgan-Stanley---Code-to-Give-Hackathon" target="_blank" rel="noopener" data-umami-event="squeeze-repo-open"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>Code on GitHub</a></div>
           </article>
           <article class="card" id="scds">
             <div class="card-head"><h4>SCDS</h4><span class="award">Winner</span></div>
@@ -1318,6 +1341,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
             </dl>
             <p>Infrastructure for capability improvement that compounds across organizations. Model weights stay fixed. What improves is the library of executable tools that organizations build, select, compose and repair, so experience from earlier tool-building makes later creation, verification and repair better.</p>
             <p>We keep three claims separate: tools pile up, tools get reused, and the tool-making process itself improves. Each needs its own evidence.</p>
+            <div><a class="hlink" href="https://github.com/HenryWashuHe/genesis" target="_blank" rel="noopener" data-umami-event="genesis-repo-open"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 6-4 4 4 4M13 6l4 4-4 4"/></svg>Code on GitHub</a></div>
           </article>
           <article class="card" id="auscultai">
             <div class="card-head"><h4>AuscultAI</h4><span class="status-tag">hackathon</span></div>
@@ -1502,6 +1526,16 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     <input id="pal-q" type="text" placeholder="Jump to a project, job or section" autocomplete="off" spellcheck="false" aria-controls="pal-list">
     <ul id="pal-list" role="listbox" aria-label="Results"></ul>
     <p class="pal-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> go</span><span><kbd>Esc</kbd> close</span></p>
+  </div>
+</dialog>
+
+<dialog class="sheet psheet" id="psheet" aria-labelledby="psheet-title">
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <div><h2 id="psheet-title"></h2><div class="card-head" id="psheet-badge"></div></div>
+      <button class="x" type="button" id="psheet-close" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body" id="psheet-body"></div>
   </div>
 </dialog>
 
@@ -2267,6 +2301,53 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       var typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); pal.open ? close() : open(); }
       else if (e.key === "/" && !typing && !pal.open) { e.preventDefault(); open(); }
+    });
+  })();
+
+  /* ---- project cards: summary on the grid, full write-up in a sheet ---- */
+  (function () {
+    var ps = document.getElementById("psheet"), psTitle = document.getElementById("psheet-title"), psBadge = document.getElementById("psheet-badge"), psBody = document.getElementById("psheet-body");
+    var lastCard = null;
+    function openP(card) {
+      if (!ps.showModal) return;
+      lastCard = card;
+      var full = card._full;
+      psTitle.textContent = card.querySelector("h4").textContent;
+      psBadge.innerHTML = full.badge;
+      psBody.innerHTML = full.body;
+      track("project-open", { project: card.id });
+      ps.showModal(); ps.scrollTop = 0;
+      requestAnimationFrame(function () { requestAnimationFrame(function () { ps.classList.add("in"); }); });
+    }
+    function closeP() {
+      ps.classList.remove("in");
+      setTimeout(function () { if (ps.open) ps.close(); if (lastCard) lastCard.focus({ preventScroll: true }); }, reduce ? 0 : 380);
+    }
+    document.getElementById("psheet-close").addEventListener("click", closeP);
+    ps.addEventListener("cancel", function (e) { e.preventDefault(); closeP(); });
+    ps.addEventListener("click", function (e) { if (e.target === ps) { var r = ps.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeP(); } });
+
+    [].slice.call(document.querySelectorAll(".more .card")).forEach(function (card) {
+      var head = card.querySelector(".card-head"), sub = card.querySelector(".sub");
+      var paras = [].slice.call(card.querySelectorAll(":scope > p:not(.sub)"));
+      var stack = card.querySelector(".stack"), code = card.querySelector(".hlink");
+      var badges = [].slice.call(head.querySelectorAll(".award, .status-tag")).map(function (b) { return b.outerHTML; }).join("");
+      // full write-up for the sheet: everything except the title row
+      var bodyParts = [];
+      [].slice.call(card.children).forEach(function (ch) { if (ch !== head) bodyParts.push(ch.outerHTML); });
+      card._full = { badge: badges, body: bodyParts.join("") };
+      // summary
+      var chips = stack ? [].slice.call(stack.querySelectorAll("dd span")).slice(0, card.classList.contains("card-wide") ? 7 : 5).map(function (x) { return "<span>" + x.textContent + "</span>"; }).join("") : "";
+      var pitch = paras.length ? paras[0].textContent : "";
+      card.innerHTML = head.outerHTML + (sub ? sub.outerHTML : "") +
+        '<p class="card-pitch">' + esc(pitch) + "</p>" +
+        (chips ? '<div class="card-chips">' + chips + "</div>" : "") +
+        '<div class="card-foot"><button type="button" class="card-more">Read the write-up</button>' +
+        (code ? '<a class="card-code" href="' + code.getAttribute("href") + '" target="_blank" rel="noopener" data-umami-event="' + (code.getAttribute("data-umami-event") || "repo-open") + '">Code on GitHub</a>' : "") + "</div>";
+      card.classList.add("sum"); card.tabIndex = 0; card.setAttribute("role", "button");
+      card.setAttribute("aria-label", card.querySelector("h4").textContent + ": read the write-up");
+      card.addEventListener("click", function (e) { if (e.target.closest("a")) return; openP(card); });
+      card.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openP(card); } });
     });
   })();
 })();
