@@ -2350,6 +2350,21 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       card.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openP(card); } });
     });
   })();
+
+  /* ---- engagement signals for analytics (bots never trigger these) ---- */
+  (function () {
+    var marks = [25, 50, 75, 100], hit = {}, active = 0, fired = {};
+    function depth() {
+      var pct = (window.scrollY + window.innerHeight) / Math.max(1, document.documentElement.scrollHeight) * 100;
+      marks.forEach(function (m) { if (pct >= m - 1 && !hit[m]) { hit[m] = true; track("scroll-depth", { percent: m }); } });
+    }
+    window.addEventListener("scroll", function () { if (!depth._t) depth._t = setTimeout(function () { depth._t = 0; depth(); }, 400); }, { passive: true });
+    setInterval(function () {
+      if (document.hidden) return;
+      active += 5;
+      [15, 60, 180].forEach(function (sec) { if (active >= sec && !fired[sec]) { fired[sec] = true; track("engaged", { seconds: sec }); } });
+    }, 5000);
+  })();
 })();
 </script>
 </body>
