@@ -22,7 +22,7 @@ body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 </style>
-<script defer src="https://cloud.umami.is/script.js" data-website-id="abab3950-d36e-4b57-8465-5c5735c0cceb" data-domains="henrycolumbiahe.com"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="abab3950-d36e-4b57-8465-5c5735c0cceb" data-domains="henrycolumbiahe.com" data-auto-track="false"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:ital,wght@0,400..700;1,400..600&display=swap">
@@ -2364,6 +2364,20 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
       active += 5;
       [15, 60, 180].forEach(function (sec) { if (active >= sec && !fired[sec]) { fired[sec] = true; track("engaged", { seconds: sec }); } });
     }, 5000);
+  })();
+
+  /* ---- count a visit only once a human shows up (scanners never interact) ---- */
+  (function () {
+    var done = false, visible = 0;
+    function send() {
+      if (done) return;
+      if (!window.umami) { setTimeout(send, 500); return; }
+      done = true;
+      try { window.umami.track(); } catch (e) {}
+      ["pointermove", "scroll", "keydown", "touchstart"].forEach(function (ev) { window.removeEventListener(ev, send); });
+    }
+    ["pointermove", "scroll", "keydown", "touchstart"].forEach(function (ev) { window.addEventListener(ev, send, { passive: true, once: true }); });
+    var t = setInterval(function () { if (done) { clearInterval(t); return; } if (!document.hidden && (visible += 1) >= 8) { clearInterval(t); send(); } }, 1000);
   })();
 })();
 </script>
