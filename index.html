@@ -2366,18 +2366,17 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     }, 5000);
   })();
 
-  /* ---- count a visit only once a human shows up (scanners never interact) ---- */
+  /* ---- count a visit only on real human input (scanners never produce it) ---- */
   (function () {
-    var done = false, visible = 0;
-    function send() {
-      if (done) return;
+    var EV = ["pointermove", "pointerdown", "wheel", "touchstart", "keydown"], done = false;
+    function send(e) {
+      if (done || (e && e.isTrusted === false)) return;
       if (!window.umami) { setTimeout(send, 500); return; }
       done = true;
-      try { window.umami.track(); } catch (e) {}
-      ["pointermove", "scroll", "keydown", "touchstart"].forEach(function (ev) { window.removeEventListener(ev, send); });
+      EV.forEach(function (ev) { window.removeEventListener(ev, send); });
+      try { window.umami.track(); } catch (err) {}
     }
-    ["pointermove", "scroll", "keydown", "touchstart"].forEach(function (ev) { window.addEventListener(ev, send, { passive: true, once: true }); });
-    var t = setInterval(function () { if (done) { clearInterval(t); return; } if (!document.hidden && (visible += 1) >= 8) { clearInterval(t); send(); } }, 1000);
+    EV.forEach(function (ev) { window.addEventListener(ev, send, { passive: true }); });
   })();
 })();
 </script>
