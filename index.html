@@ -1545,7 +1545,8 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
 <script>
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function track(name, data) { try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
+  var human = false;
+  function track(name, data) { if (!human) return; try { if (window.umami) window.umami.track(name, data); } catch (e) {} }
 
   /* ---- name letters ---- */
   var nameEl = document.getElementById("name"), idx = 0;
@@ -2360,7 +2361,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     }
     window.addEventListener("scroll", function () { if (!depth._t) depth._t = setTimeout(function () { depth._t = 0; depth(); }, 400); }, { passive: true });
     setInterval(function () {
-      if (document.hidden) return;
+      if (document.hidden || !human) return;
       active += 5;
       [15, 60, 180].forEach(function (sec) { if (active >= sec && !fired[sec]) { fired[sec] = true; track("engaged", { seconds: sec }); } });
     }, 5000);
@@ -2372,7 +2373,7 @@ footer .in { padding-block: 18px calc(env(safe-area-inset-bottom, 0px) + 22px); 
     function send(e) {
       if (done || (e && e.isTrusted === false)) return;
       if (!window.umami) { setTimeout(send, 500); return; }
-      done = true;
+      done = true; human = true;
       EV.forEach(function (ev) { window.removeEventListener(ev, send); });
       try { window.umami.track(); } catch (err) {}
     }
